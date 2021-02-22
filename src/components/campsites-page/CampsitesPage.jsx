@@ -10,6 +10,7 @@ class CampsitesPage extends Component {
       <div className="App__campsitespage">
         <Router>
           <CampsitesSearchANDResults path="/" changeMap={this.changeMap} />
+          <SingleCampsitePage path="/campsite/:place_id" map={this.state.map} />
         </Router>
       </div>
     );

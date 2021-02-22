@@ -5,7 +5,9 @@ const campsiteCard = ({ campsite }) => {
   return (
     <section className="campsite-card">
       <div className="campsite-info">
-        <h3 className="">{campsite.name}</h3>
+        <Link to={`/campsite/${campsite.place_id}`}>
+          <h3>{campsite.name}</h3>
+        </Link>
         <p>{campsite.formatted_address}</p>
         <p>{campsite.rating}</p>
       </div>

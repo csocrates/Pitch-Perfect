@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CampsiteCard from "./CampsiteCard";
 
 class CampsiteList extends Component {
   state = { isLoading: true, campsiteList: [] };
@@ -8,7 +9,6 @@ class CampsiteList extends Component {
   }
   render() {
     const { isLoading, campsiteList } = this.state;
-    //map function here which invokes campsite card component
 
     return (
       <div>

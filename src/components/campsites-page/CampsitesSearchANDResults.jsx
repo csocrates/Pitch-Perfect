@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as apis from "../../apis";
+import CampsiteList from "../CampsiteCard";
 
 class CampsitesSearchANDResults extends Component {
   state = { isLoading: true, geoLocation: {}, searchLocation: "" };
@@ -16,6 +17,7 @@ class CampsitesSearchANDResults extends Component {
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
         <SearchBar />
+        <CampsiteList map={this.props.map} />
       </div>
     );
   }
