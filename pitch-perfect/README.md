@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+﻿USER STORIES AS A USER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    	MVP
 
-## Available Scripts
 
-In the project directory, you can run:
+    I want  see the list of the campsite locations
+    I want search for locations using a search bar (postcode, county, etc)
+    I want to see a details of the selected campsites (response from api)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    		Extra features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    I want to view a map of campsites nearby my location(10 miles)
+    I want to see the nearest pub, supermarket etc
+    I want to adjust my search range
+    I want to see how to get there
+    I want also to see point of interests near by location of the selected campsite(10 miles)
+    I want to know if I can to go for a walk
+    I want to able to sign up and create a profile and login
+    I want to interact with campsite owner
+    I want to check availability
+    I want to make a booking
+    After my stay I want to leave a review and rating
 
-### `npm test`
+USER STORIES AS CAMPSITE OWNER
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    		Extra features
 
-### `npm run build`
+    I want to able to sign up and create a profile and login
+    I want to access owner portal
+    I want to be able register as my campsite
+    I want to be able to send proof of my identity and address
+    I want to add extra informations to campsite details
+    I want to reply to reviews
+    I want to see any bookings
+    I want to confirm or reject any booking
+    I want to interact with camper
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This is the link to figma wireframe of the Pitch Perfect app
+https://www.figma.com/file/CyYohY0SHJsbDPfvsJaQs9/Goose-camping?node-id=0%3A1
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Include API KEY
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+const { REACT_APP_API_KEY } = process.env;
+```
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Create .env and env.js files
+- Ask team for details
