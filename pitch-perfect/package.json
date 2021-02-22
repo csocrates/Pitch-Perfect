@@ -49,5 +49,10 @@
   "devDependencies": {
     "eslint": "^7.20.0",
     "husky": "^5.1.0"
+  },
+  "react-dotenv": {
+    "whitelist": [
+      "REACT_APP_API_KEY"
+    ]
   }
 }

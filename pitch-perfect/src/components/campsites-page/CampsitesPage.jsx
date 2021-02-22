@@ -3,9 +3,9 @@ import { Router } from "@reach/router";
 import CampsitesSearchANDResults from "./CampsitesSearchANDResults";
 
 class CampsitesPage extends Component {
-  state = { map: "", isLoading: true };
+  state = { map: "", isLoading: false };
   render() {
-    if (isLoading) return "Loading";
+    if (this.isLoading) return "Loading";
     return (
       <div className="App__campsitespage">
         <Router>
