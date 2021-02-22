@@ -13,7 +13,11 @@ class CampsitesSearchANDResults extends Component {
     });
   }
   render() {
-    return <div className="campsitepage__CampsitesSearchANDResults"></div>;
+    return (
+      <div className="campsitepage__CampsitesSearchANDResults">
+        <SearchBar />
+      </div>
+    );
   }
 
   changeLocation = (searchLocation) => {
