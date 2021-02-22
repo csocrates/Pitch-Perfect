@@ -7,6 +7,7 @@
 }
 
 .campsite-img {
-  width: 200px;
+  width: 100px;
+  height: auto;
   position: left;
 }

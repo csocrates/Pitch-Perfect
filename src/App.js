@@ -5,6 +5,7 @@ import CampsitesPage from "./components/campsites-page/CampsitesPage";
 
 class App extends Component {
   state = {};
+
   render() {
     return (
       <div>
