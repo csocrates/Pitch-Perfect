@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as apis from "../../apis";
 
 class CampsitesSearchANDResults extends Component {
   state = { isLoading: true, geoLocation: {}, searchLocation: "" };
@@ -14,8 +15,11 @@ class CampsitesSearchANDResults extends Component {
   render() {
     return <div className="campsitepage__CampsitesSearchANDResults"></div>;
   }
+
   changeLocation = (searchLocation) => {
-    this.setState({ searchLocation });
+    apis
+      .fetchGeocode(searchLocation)
+      .then((geoLocation) => this.setState({ searchLocation, geoLocation }));
   };
 }
 
