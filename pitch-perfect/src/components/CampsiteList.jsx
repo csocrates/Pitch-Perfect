@@ -10,7 +10,15 @@ class CampsiteList extends Component {
     const { isLoading, campsiteList } = this.state;
     //map function here which invokes campsite card component
 
-    return <div>{isLoading ? "" : campsiteList}</div>;
+    return (
+      <div>
+        {isLoading
+          ? ""
+          : campsiteList.map((campsite) => {
+              return <CampsiteCard campsite={campsite} />;
+            })}
+      </div>
+    );
   }
   fetchCampsitesByLocation(map) {
     let campsiteList = [];
