@@ -9,7 +9,11 @@ class CampsitesPage extends Component {
     return (
       <div className="App__campsitespage">
         <Router>
-          <CampsitesSearchANDResults path="/" changeMap={this.changeMap} />
+          <CampsitesSearchANDResults
+            path="/"
+            changeMap={this.changeMap}
+            map={this.state.map}
+          />
         </Router>
       </div>
     );

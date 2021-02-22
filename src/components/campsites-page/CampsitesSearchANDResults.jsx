@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as apis from "../../apis";
+import MapBlock from "./MapBlock";
 
 class CampsitesSearchANDResults extends Component {
   state = { isLoading: true, geoLocation: {}, searchLocation: "" };
@@ -12,10 +13,17 @@ class CampsitesSearchANDResults extends Component {
       isLoading: false,
     });
   }
+
   render() {
+    if (this.state.isLoading) return "Loading";
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
-        <SearchBar />
+        {/* <SearchBar /> */}
+        <MapBlock
+          geoLocation={this.state.geoLocation}
+          changeLocation={this.changeLocation}
+          changeMap={this.props.changeMap}
+        />
       </div>
     );
   }
