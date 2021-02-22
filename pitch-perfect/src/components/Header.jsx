@@ -5,7 +5,7 @@ const Header = ({profilePicture = "https://1734811051.rsc.cdn77.org/data/images/
     return (
         <main className="App__Header">
             <h1 className='App__HeaderTitle'>Pitch Perfect</h1>
-            <img className="App__HeaderProfilePic" src={profilePicture} alt="profile picture"></img>
+            <img className="App__HeaderProfilePic" src={profilePicture} alt="profile"></img>
         </main>
     );
 };
