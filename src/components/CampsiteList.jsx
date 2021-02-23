@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CampsiteCard from "./CampsiteCard";
 
 class CampsiteList extends Component {
+  // eslint-disable-next-line no-undef
   state = { isLoading: true, campsiteList: [] };
 
   componentDidMount() {

@@ -3,6 +3,7 @@ import * as apis from "../../apis";
 import CampsiteList from "../CampsiteCard";
 
 class CampsitesSearchANDResults extends Component {
+  // eslint-disable-next-line no-undef
   state = { isLoading: true, geoLocation: {}, searchLocation: "" };
   componentDidMount() {
     this.setState({
@@ -16,12 +17,13 @@ class CampsitesSearchANDResults extends Component {
   render() {
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
-        <SearchBar />
+        {/* <SearchBar /> */}
         <CampsiteList map={this.props.map} />
       </div>
     );
   }
 
+  // eslint-disable-next-line no-undef
   changeLocation = (searchLocation) => {
     apis
       .fetchGeocode(searchLocation)
