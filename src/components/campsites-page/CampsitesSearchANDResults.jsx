@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as apis from "../../apis";
-import SearchBar from './SearchBar'
+import SearchBar from "./SearchBar";
 import MapBlock from "./MapBlock";
 import CampsiteList from "../CampsiteList";
 
@@ -8,16 +8,15 @@ class CampsitesSearchANDResults extends Component {
   state = { isLoading: true, geoLocation: {}, searchLocation: "" };
 
   componentDidMount() {
-    this.setState({
-      geoLocation: {
-        lat: 50.817570,
-        lng: -0.132454,
-      },
-      isLoading: false,
+    navigator.geolocation.getCurrentPosition((position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      this.setState({ geoLocation: { lat, lng }, isLoading: false });
     });
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     if (this.state.isLoading) {
       this.setState(() => {
         return { isLoading: false };
@@ -29,9 +28,7 @@ class CampsitesSearchANDResults extends Component {
     if (this.state.isLoading) return "Loading";
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
-        <SearchBar
-          changeLocation={this.changeLocation}
-        />
+        <SearchBar changeLocation={this.changeLocation} />
         <MapBlock
           geoLocation={this.state.geoLocation}
           changeMap={this.props.changeMap}
@@ -44,7 +41,9 @@ class CampsitesSearchANDResults extends Component {
   changeLocation = (searchLocation) => {
     apis
       .fetchGeocode(searchLocation)
-      .then((geoLocation) => this.setState({ searchLocation, geoLocation, isLoading: true }));
+      .then((geoLocation) =>
+        this.setState({ searchLocation, geoLocation, isLoading: true })
+      );
   };
 }
 
