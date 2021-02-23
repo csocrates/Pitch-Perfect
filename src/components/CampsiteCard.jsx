@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import "./campsiteCard.css";
 
 const campsiteCard = ({ campsite }) => {
   return (
@@ -11,11 +12,11 @@ const campsiteCard = ({ campsite }) => {
         <p>{campsite.formatted_address}</p>
         <p>{campsite.rating}</p>
       </div>
-      {/* <img
+      <img
         className="campsite-img"
-        src={campsite.photos[0].getUrl()}
+        src={campsite.photos ? campsite.photos[0].getUrl() : null}
         alt="lovely campsite"
-      /> */}
+      />
     </section>
   );
 };

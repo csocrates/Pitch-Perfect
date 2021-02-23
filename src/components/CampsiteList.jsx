@@ -3,22 +3,28 @@ import CampsiteCard from "./CampsiteCard";
 
 class CampsiteList extends Component {
   state = { isLoading: true, campsiteList: [] };
-
   componentDidMount() {
-    console.log(this.props.map);
-    this.fetchCampsitesByLocation(this.props.map);
+    if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
+  }
+  componentDidUpdate(prevProps) {
+    if (!prevProps.map) {
+      this.fetchCampsitesByLocation(this.props.map);
+    } else if (
+      this.props.map.center.lat() !== prevProps.map.center.lat() &&
+      this.props.map.center.lng() !== prevProps.map.center.lng()
+    ) {
+      this.fetchCampsitesByLocation(this.props.map);
+    }
   }
   render() {
     const { isLoading, campsiteList } = this.state;
+    if (isLoading) return "Loading";
+    if (campsiteList.length === 0) return "No campsite found";
     return (
       <div>
-        {isLoading
-          ? ""
-          : this.state.campsiteList.map((campsite) => {
-              return (
-                <CampsiteCard key={campsite.reference} campsite={campsite} />
-              );
-            })}
+        {this.state.campsiteList.map((campsite) => {
+          return <CampsiteCard key={campsite.reference} campsite={campsite} />;
+        })}
       </div>
     );
   }
@@ -38,7 +44,6 @@ class CampsiteList extends Component {
         for (let i = 0; i < results.length; i++) {
           campsiteList.push(results[i]);
         }
-        console.log(campsiteList);
         this.setState({ isLoading: false, campsiteList });
       }
     });

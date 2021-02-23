@@ -23,7 +23,6 @@ class CampsitesSearchANDResults extends Component {
         {/* <SearchBar /> */}
         <MapBlock
           geoLocation={this.state.geoLocation}
-          changeLocation={this.changeLocation}
           changeMap={this.props.changeMap}
         />
         <CampsiteList map={this.props.map} />
