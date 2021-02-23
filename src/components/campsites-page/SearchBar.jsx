@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./SearchBar.css"
 
 class SearchBar extends Component {
 
@@ -9,8 +10,8 @@ class SearchBar extends Component {
     render () {
         const { searchQuery } = this.state;
         return (
-            <>
-                <form onSubmit={this.handleSubmit}>
+            <section>
+                <form className="SearchBar__Input" onSubmit={this.handleSubmit}>
                     <label>
                         Campsites near:
                         <input
@@ -22,7 +23,7 @@ class SearchBar extends Component {
                     </label>
                     <button>Submit</button>
                 </form>  
-            </>
+            </section>
         );
     }
 
@@ -33,7 +34,7 @@ class SearchBar extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault()
+        if (event.cancelable) event.preventDefault();
         const searchTerm = this.state.searchQuery;
         this.setState(() => {
             return { searchQuery: '' };

@@ -1,12 +1,13 @@
 .campsite-card {
-  display: flex;
-  background-color: grey;
+  background-color: white;
+  border: 2px grey solid;
 }
 
 .campsite-info {
 }
 
 .campsite-img {
-  width: 200px;
+  width: 100px;
+  height: auto;
   position: left;
 }
