@@ -6,7 +6,7 @@ class MapBlock extends Component {
   state = { isLoading: true, zoom: 15, centre: {} };
 
   componentDidMount() {
-    console.log(this.props.geoLocation);
+    console.log("mounting", this.props.geoLocation);
     this.setState({ centre: this.props.geoLocation, isLoading: false });
   }
 
