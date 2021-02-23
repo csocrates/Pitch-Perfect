@@ -23,7 +23,6 @@ class CampsiteList extends Component {
     return (
       <div>
         {this.state.campsiteList.map((campsite) => {
-          console.log(campsite)
           return <CampsiteCard key={campsite.reference} campsite={campsite} />;
         })}
       </div>
@@ -37,10 +36,9 @@ class CampsiteList extends Component {
       radius: "500",
       fields: ["name", "geometry"],
     };
-    console.log("fetchcamp", map);
+
     const service = new window.google.maps.places.PlacesService(map);
     service.textSearch(request, (results, status) => {
-      console.log(status);
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
         for (let i = 0; i < results.length; i++) {
           campsiteList.push(results[i]);
