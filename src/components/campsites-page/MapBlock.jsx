@@ -28,6 +28,7 @@ class MapBlock extends Component {
   }
 
   handleApiLoaded = (map, maps) => {
+    console.log("handleApi", map);
     this.props.changeMap(map);
   };
 }

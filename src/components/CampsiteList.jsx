@@ -1,21 +1,23 @@
 import React, { Component } from "react";
+import CampsiteCard from "./CampsiteCard";
 
 class CampsiteList extends Component {
   state = { isLoading: true, campsiteList: [] };
 
   componentDidMount() {
+    console.log(this.props.map);
     this.fetchCampsitesByLocation(this.props.map);
   }
   render() {
     const { isLoading, campsiteList } = this.state;
-    //map function here which invokes campsite card component
-
     return (
       <div>
         {isLoading
           ? ""
-          : campsiteList.map((campsite) => {
-              return <CampsiteCard campsite={campsite} />;
+          : this.state.campsiteList.map((campsite) => {
+              return (
+                <CampsiteCard key={campsite.reference} campsite={campsite} />
+              );
             })}
       </div>
     );
@@ -28,16 +30,18 @@ class CampsiteList extends Component {
       radius: "500",
       fields: ["name", "geometry"],
     };
+    console.log("fetchcamp", map);
     const service = new window.google.maps.places.PlacesService(map);
-
     service.textSearch(request, (results, status) => {
+      console.log(status);
       if (status == window.google.maps.places.PlacesServiceStatus.OK) {
         for (let i = 0; i < results.length; i++) {
           campsiteList.push(results[i]);
         }
+        console.log(campsiteList);
+        this.setState({ isLoading: false, campsiteList });
       }
     });
-    this.setState({ isLoading: false, campsiteList });
   }
 }
 
