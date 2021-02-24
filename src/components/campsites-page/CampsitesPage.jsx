@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import CampsitesSearchANDResults from "./CampsitesSearchANDResults";
+import SingleCampsitePage from "../singleCampsitePage/SingleCampsitePage";
 
 class CampsitesPage extends Component {
   // eslint-disable-next-line no-undef
@@ -16,7 +17,7 @@ class CampsitesPage extends Component {
             map={this.state.map}
           />
 
-          {/* <SingleCampsitePage path="/campsite/:place_id" map={this.state.map} /> */}
+          <SingleCampsitePage path="/campsite/*" map={this.state.map} />
         </Router>
       </div>
     );

@@ -2,6 +2,7 @@
   padding: 10px;
   display: grid;
   grid-template-columns: 3fr 1fr;
+  background: green;
 }
 
 .App__HeaderTitle {
@@ -12,6 +13,8 @@
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 10px;
+  font-weight: 800;
+  color: white;
 }
 
 .App__HeaderProfilePic {
