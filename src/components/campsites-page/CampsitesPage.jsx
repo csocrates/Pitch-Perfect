@@ -4,6 +4,7 @@ import CampsitesSearchANDResults from "./CampsitesSearchANDResults";
 import SingleCampsitePage from "../singleCampsitePage/SingleCampsitePage";
 
 class CampsitesPage extends Component {
+  // eslint-disable-next-line no-undef
   state = { map: "", isLoading: false };
   render() {
     if (this.isLoading) return "Loading";
@@ -21,6 +22,7 @@ class CampsitesPage extends Component {
       </div>
     );
   }
+  // eslint-disable-next-line no-undef
   changeMap = (newMap) => {
     this.setState({ map: newMap, isLoading: false });
   };

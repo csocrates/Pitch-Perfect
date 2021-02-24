@@ -5,22 +5,41 @@ import MapBlock from "./MapBlock";
 import CampsiteList from "../CampsiteList";
 
 class CampsitesSearchANDResults extends Component {
-  state = { isLoading: true, geoLocation: {}, searchLocation: "" };
+  // eslint-disable-next-line no-undef
+  state = { 
+    isLoading: true, 
+    geoLocation: {}, 
+    searchLocation: "",
+    campsiteList: []
+  };
 
   componentDidMount() {
+    console.log('1')
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
       this.setState({ geoLocation: { lat, lng }, isLoading: false });
     });
+    if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
   }
 
-  componentDidUpdate() {
-    if (this.state.isLoading) {
-      this.setState(() => {
-        return { isLoading: false };
-      });
+  componentDidUpdate(prevProps) {
+  if (this.state.isLoading) {
+    this.setState({isLoading: false})
+  }
+    if (!prevProps.map && this.props.map) {
+      console.log('2')
+      console.log(this.props.map.length)
+      console.log( prevProps.map.length, 'prevprops')
+      this.fetchCampsitesByLocation(this.props.map);
+    } else if (
+      this.props.map && 
+      this.props.map.center.lat() !== prevProps.map.center.lat() &&
+      this.props.map.center.lng() !== prevProps.map.center.lng()
+    ) {
+      console.log('3')
+      this.fetchCampsitesByLocation(this.props.map);
     }
   }
 
@@ -30,14 +49,19 @@ class CampsitesSearchANDResults extends Component {
       <div className="campsitepage__CampsitesSearchANDResults">
         <SearchBar changeLocation={this.changeLocation} />
         <MapBlock
-          geoLocation={this.state.geoLocation}
-          changeMap={this.props.changeMap}
+        geoLocation={this.state.geoLocation}
+        changeMap={this.props.changeMap}
+        campsiteList={this.state.campsiteList}
+      />
+        <CampsiteList
+        isLoading={this.state.isLoading}
+        campsiteList={this.state.campsiteList}
         />
-        <CampsiteList map={this.props.map} />
       </div>
     );
   }
 
+  // eslint-disable-next-line no-undef
   changeLocation = (searchLocation) => {
     apis
       .fetchGeocode(searchLocation)
@@ -45,6 +69,26 @@ class CampsitesSearchANDResults extends Component {
         this.setState({ searchLocation, geoLocation, isLoading: true })
       );
   };
+
+  fetchCampsitesByLocation(map) {
+    let campsiteList = [];
+    const request = {
+      location: map.center,
+      query: "campsites",
+      radius: "500",
+      fields: ["name", "geometry"],
+    };
+    const service = new window.google.maps.places.PlacesService(map);
+    service.textSearch(request, (results, status) => {
+      if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+        for (let i = 0; i < results.length; i++) {
+          campsiteList.push(results[i]);
+        }
+        this.setState({ isLoading: false, campsiteList });
+      }
+    });
+  }
+
 }
 
 export default CampsitesSearchANDResults;
