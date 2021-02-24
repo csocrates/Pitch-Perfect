@@ -6,7 +6,8 @@ import SingleCampsitePage from "../singleCampsitePage/SingleCampsitePage";
 class CampsitesPage extends Component {
   state = { map: "", isLoading: false };
   render() {
-    if (this.isLoading) return "Loading";
+    if (this.state.isLoading) return "Loading";
+
     return (
       <div className="App__campsitespage">
         <Router>

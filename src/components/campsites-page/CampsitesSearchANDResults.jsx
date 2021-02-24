@@ -17,6 +17,7 @@ class CampsitesSearchANDResults extends Component {
   }
 
   componentDidUpdate() {
+    console.log("hi Dong");
     if (this.state.isLoading) {
       this.setState(() => {
         return { isLoading: false };
@@ -26,6 +27,7 @@ class CampsitesSearchANDResults extends Component {
 
   render() {
     if (this.state.isLoading) return "Loading";
+
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
         <SearchBar changeLocation={this.changeLocation} />
@@ -42,7 +44,7 @@ class CampsitesSearchANDResults extends Component {
     apis
       .fetchGeocode(searchLocation)
       .then((geoLocation) =>
-        this.setState({ searchLocation, geoLocation, isLoading: true })
+        this.setState({ searchLocation, geoLocation, isLoading: false })
       );
   };
 }
