@@ -1,0 +1,39 @@
+.SingleCampsiteIntro {
+}
+
+.SingleCampsiteIntro__name {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 5px;
+}
+
+.SingleCampsiteIntro__address {
+  margin-bottom: 0;
+  padding: 0 5px;
+  background: ivory;
+  border-top: 2px solid lightgreen;
+}
+
+.SingleCampsiteIntro__contact {
+  margin-bottom: 0;
+  padding: 0 5px;
+  background: ivory;
+}
+
+.SingleCampsiteIntro__rating {
+  padding: 0 5px;
+  background: ivory;
+  border-bottom: 2px solid lightgreen;
+}
+
+.SingleCampsiteIntro__photos {
+  margin: auto auto;
+  width: 20rem;
+  height: 15rem;
+  background-color: indigo;
+}
+
+.SingleCampsiteIntro__photos__photo {
+  width: 20rem;
+  height: 15rem;
+}

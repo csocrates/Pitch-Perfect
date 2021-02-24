@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import NearestCard from "./NearestCard";
 
 class POIBoard extends Component {
   state = {
@@ -6,6 +7,8 @@ class POIBoard extends Component {
     nearestBars: [],
     nearestSupermarkets: [],
     nearestCafes: [],
+    placesLoaded: false,
+    distanceInfo: [],
   };
 
   componentDidMount() {
@@ -13,15 +16,10 @@ class POIBoard extends Component {
     this.fetchNearestPlaces(location);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     const { location } = this.props;
-    console.log("CDU", prevProps.location, location);
     const { nearestBars, nearestSupermarkets, nearestCafes } = this.state;
-    console.log(nearestBars[0]);
-    if (
-      location.lat() !== prevProps.location.lat() &&
-      location.lng() !== prevProps.location.lng()
-    ) {
+    if (this.state.placesLoaded) {
       this.findDistanceBetween(location, [
         nearestBars[0].geometry.location,
         nearestSupermarkets[0].geometry.location,
@@ -31,7 +29,34 @@ class POIBoard extends Component {
   }
 
   render() {
-    return <div></div>;
+    const {
+      isLoading,
+      nearestBars,
+      nearestSupermarkets,
+      nearestCafes,
+      distanceInfo,
+    } = this.state;
+
+    if (isLoading) return "Loading...";
+    return (
+      <div>
+        <NearestCard
+          type="Pub"
+          name={nearestBars[0].name}
+          distance={distanceInfo[0].distance.text}
+        />
+        <NearestCard
+          type="Supermarket"
+          name={nearestSupermarkets[0].name}
+          distance={distanceInfo[1].distance.text}
+        />
+        <NearestCard
+          type="Cafe"
+          name={nearestCafes[0].name}
+          distance={distanceInfo[2].distance.text}
+        />
+      </div>
+    );
   }
   fetchNearestPlaces(location) {
     let nearestBars = [];
@@ -76,7 +101,7 @@ class POIBoard extends Component {
             nearestBars,
             nearestSupermarkets,
             nearestCafes,
-            isLoading: false,
+            placesLoaded: true,
           });
         });
       });
@@ -84,7 +109,6 @@ class POIBoard extends Component {
   }
 
   findDistanceBetween(origin, destinations) {
-    console.log("FIND DISTANCE");
     const service = new window.google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {
@@ -92,8 +116,16 @@ class POIBoard extends Component {
         destinations,
         travelMode: "WALKING",
       },
-      (response, staus) => {
-        console.log(response);
+      ({ rows }, status) => {
+        if (status !== "OK") {
+          console.log("Error was " + status);
+        } else {
+          this.setState({
+            distanceInfo: rows[0].elements,
+            placesLoaded: false,
+            isLoading: false,
+          });
+        }
       }
     );
   }
