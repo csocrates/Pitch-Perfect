@@ -1,24 +1,62 @@
 import React, { Component } from "react";
 import * as apis from "../../apis";
-import CampsiteList from "../CampsiteCard";
+import SearchBar from "./SearchBar";
+import MapBlock from "./MapBlock";
+import CampsiteList from "../CampsiteList";
 
 class CampsitesSearchANDResults extends Component {
   // eslint-disable-next-line no-undef
-  state = { isLoading: true, geoLocation: {}, searchLocation: "" };
+  state = { 
+    isLoading: true, 
+    geoLocation: {}, 
+    searchLocation: "",
+    campsiteList: []
+  };
+
   componentDidMount() {
-    this.setState({
-      geoLocation: {
-        lat: 53.483959,
-        lng: -2.244644,
-      },
-      isLoading: false,
+    console.log('1')
+    navigator.geolocation.getCurrentPosition((position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      this.setState({ geoLocation: { lat, lng }, isLoading: false });
     });
+    if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
   }
+
+  componentDidUpdate(prevProps) {
+  if (this.state.isLoading) {
+    this.setState({isLoading: false})
+  }
+    if (!prevProps.map && this.props.map) {
+      console.log('2')
+      console.log(this.props.map.length)
+      console.log( prevProps.map.length, 'prevprops')
+      this.fetchCampsitesByLocation(this.props.map);
+    } else if (
+      this.props.map && 
+      this.props.map.center.lat() !== prevProps.map.center.lat() &&
+      this.props.map.center.lng() !== prevProps.map.center.lng()
+    ) {
+      console.log('3')
+      this.fetchCampsitesByLocation(this.props.map);
+    }
+  }
+
   render() {
+    if (this.state.isLoading) return "Loading";
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
-        {/* <SearchBar /> */}
-        <CampsiteList map={this.props.map} />
+        <SearchBar changeLocation={this.changeLocation} />
+        <MapBlock
+        geoLocation={this.state.geoLocation}
+        changeMap={this.props.changeMap}
+        campsiteList={this.state.campsiteList}
+      />
+        <CampsiteList
+        isLoading={this.state.isLoading}
+        campsiteList={this.state.campsiteList}
+        />
       </div>
     );
   }
@@ -27,8 +65,30 @@ class CampsitesSearchANDResults extends Component {
   changeLocation = (searchLocation) => {
     apis
       .fetchGeocode(searchLocation)
-      .then((geoLocation) => this.setState({ searchLocation, geoLocation }));
+      .then((geoLocation) =>
+        this.setState({ searchLocation, geoLocation, isLoading: true })
+      );
   };
+
+  fetchCampsitesByLocation(map) {
+    let campsiteList = [];
+    const request = {
+      location: map.center,
+      query: "campsites",
+      radius: "500",
+      fields: ["name", "geometry"],
+    };
+    const service = new window.google.maps.places.PlacesService(map);
+    service.textSearch(request, (results, status) => {
+      if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+        for (let i = 0; i < results.length; i++) {
+          campsiteList.push(results[i]);
+        }
+        this.setState({ isLoading: false, campsiteList });
+      }
+    });
+  }
+
 }
 
 export default CampsitesSearchANDResults;
