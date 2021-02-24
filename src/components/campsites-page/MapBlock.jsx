@@ -2,28 +2,28 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import CurrentLocationMarker from "../CurrentLocationMarker";
 import Marker from "../Marker";
+import "./MapBlock.css";
 const { REACT_APP_API_KEY } = process.env;
 
 class MapBlock extends Component {
   // eslint-disable-next-line no-undef
-  state = { 
-    isLoading: true, 
-    zoom: 10, 
+  state = {
+    isLoading: true,
+    zoom: 10,
     centre: {},
     campsiteList: [],
-    isShown: { show: true, shownId: ''}
+    isShown: { show: true, shownId: "" },
   };
 
   componentDidMount() {
     this.setState({ centre: this.props.geoLocation, isLoading: false });
   }
-  
 
   render() {
-    const {campsiteList} = this.props;
+    const { campsiteList } = this.props;
     if (this.state.isLoading) return "Loading";
     return (
-      <div style={{ height: "50vh", width: "100%" }}>
+      <div className="mapblock">
         <GoogleMapReact
           bootstrapURLKeys={{
             key: REACT_APP_API_KEY,
@@ -39,7 +39,7 @@ class MapBlock extends Component {
           />
           {campsiteList.map((place) => {
             return (
-              <Marker 
+              <Marker
                 image="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Tent_Flat_Icon_Vector.svg/1024px-Tent_Flat_Icon_Vector.svg.png"
                 lat={place.geometry.location.lat()}
                 lng={place.geometry.location.lng()}
@@ -48,10 +48,9 @@ class MapBlock extends Component {
                 isShown={this.state.isShown}
                 setIsShown={this.setIsShown}
                 id={place.place_id}
-                />
-            )
+              />
+            );
           })}
-          
         </GoogleMapReact>
       </div>
     );
@@ -86,8 +85,7 @@ class MapBlock extends Component {
     this.setState(() => {
       return { isShown: { show: trueOrFalse, shownId: markerId } };
     });
-}
-
+  };
 }
 
 export default MapBlock;
