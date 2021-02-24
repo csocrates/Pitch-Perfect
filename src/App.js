@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import CampsitesPage from "./components/campsites-page/CampsitesPage";
 
 class App extends Component {
+  // eslint-disable-next-line no-undef
   state = {};
 
   render() {
