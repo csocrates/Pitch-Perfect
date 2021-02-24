@@ -8,6 +8,7 @@ class MapBlock extends Component {
 
   componentDidMount() {
     this.setState({ centre: this.props.geoLocation, isLoading: false });
+    console.log(this.props);
   }
 
   render() {

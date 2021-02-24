@@ -17,7 +17,6 @@ class CampsitesSearchANDResults extends Component {
   }
 
   componentDidUpdate() {
-    console.log("hi Dong");
     if (this.state.isLoading) {
       this.setState(() => {
         return { isLoading: false };
