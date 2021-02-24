@@ -4,13 +4,14 @@ import { Link } from "@reach/router";
 
 const campsiteCard = ({ campsite }) => {
   return (
-    <section className="campsite-card">
+    <section id={campsite.place_id}
+      className="campsite-card">
       <div className="campsite-info">
         <Link to={`/campsite/${campsite.place_id}`}>
-          <h3 className="campsite-name">{campsite.name}</h3>
+          <h3>{campsite.name}</h3>
         </Link>
-        <p className="campsite-rating">{campsite.rating}</p>
-        <p className="campsite-address">{campsite.formatted_address}</p>
+        <p>{campsite.formatted_address}</p>
+        <p>{campsite.rating}</p>
       </div>
       <img
         className="campsite-img"

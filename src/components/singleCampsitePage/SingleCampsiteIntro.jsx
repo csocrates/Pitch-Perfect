@@ -8,7 +8,6 @@ import {
 import Carousel from "react-bootstrap/Carousel";
 
 function SingleCampsiteIntro(props) {
-  console.dir(props);
   return (
     <div className="SingleCampsiteIntro">
       <h2 className="SingleCampsiteIntro__name">{props.name}</h2>

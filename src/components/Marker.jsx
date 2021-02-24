@@ -4,14 +4,16 @@ import './Marker.css';
 const Marker = ({ image, name, isShown: {show, shownId}, setIsShown, id }) => {
     return (
         <div className="Marker__holder">
-            <img
-                src={image}
-                alt="camp location" 
-                className="Marker__icon" 
-                onClick={() => {
-                    setIsShown(true, id)
-                }}>
-            </img>
+            <a href={`#${id}`}>
+                <img
+                    src={image}
+                    alt="camp location"
+                    className="Marker__icon"
+                    onClick={() => {
+                        setIsShown(true, id);
+                    }}>
+                </img>
+            </a>
             {(show && shownId === id) && (
                 <p className="Marker__name" >
                     {name}

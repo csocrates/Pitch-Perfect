@@ -3,6 +3,7 @@ import * as apis from "../../apis";
 import SearchBar from "./SearchBar";
 import MapBlock from "./MapBlock";
 import CampsiteList from "../CampsiteList";
+import './CampsitesSearchANDResults.css'
 
 class CampsitesSearchANDResults extends Component {
   // eslint-disable-next-line no-undef
@@ -14,7 +15,6 @@ class CampsitesSearchANDResults extends Component {
   };
 
   componentDidMount() {
-    console.log('1')
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
@@ -29,16 +29,12 @@ class CampsitesSearchANDResults extends Component {
     this.setState({isLoading: false})
   }
     if (!prevProps.map && this.props.map) {
-      console.log('2')
-      console.log(this.props.map.length)
-      console.log( prevProps.map.length, 'prevprops')
       this.fetchCampsitesByLocation(this.props.map);
     } else if (
       this.props.map && 
       this.props.map.center.lat() !== prevProps.map.center.lat() &&
       this.props.map.center.lng() !== prevProps.map.center.lng()
     ) {
-      console.log('3')
       this.fetchCampsitesByLocation(this.props.map);
     }
   }
@@ -47,16 +43,22 @@ class CampsitesSearchANDResults extends Component {
     if (this.state.isLoading) return "Loading";
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
-        <SearchBar changeLocation={this.changeLocation} />
-        <MapBlock
-        geoLocation={this.state.geoLocation}
-        changeMap={this.props.changeMap}
-        campsiteList={this.state.campsiteList}
-      />
-        <CampsiteList
-        isLoading={this.state.isLoading}
-        campsiteList={this.state.campsiteList}
-        />
+        <section className="CampsitesSearchANDResults__search">
+          <SearchBar changeLocation={this.changeLocation} />
+        </section>
+        <section className="CampsitesSearchANDResults__map">
+          <MapBlock
+            geoLocation={this.state.geoLocation}
+            changeMap={this.props.changeMap}
+            campsiteList={this.state.campsiteList}
+          />
+        </section>
+        <section className="CampsitesSearchANDResults__list">
+          <CampsiteList
+            isLoading={this.state.isLoading}
+            campsiteList={this.state.campsiteList}
+          />
+        </section>
       </div>
     );
   }
