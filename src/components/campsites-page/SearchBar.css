@@ -7,19 +7,10 @@
   width: 100%;
   text-align: center;
   font-weight: 600;
-  color: #3e5151; /* fallback for old browsers */
-  color: -webkit-linear-gradient(
-    to right,
-    #decba4,
-    #3e5151
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  color: linear-gradient(
-    to right,
-    #decba4,
-    #3e5151
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white; /* fallback for old browsers */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .SearchBar {
-  background: lightgreen;
+  background: green;
 }
