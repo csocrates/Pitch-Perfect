@@ -10,7 +10,8 @@ class MapBlock extends Component {
     isLoading: true, 
     zoom: 10, 
     centre: {},
-    campsiteList: []
+    campsiteList: [],
+    isShown: { show: true, shownId: ''}
   };
 
   componentDidMount() {
@@ -43,6 +44,10 @@ class MapBlock extends Component {
                 lat={place.geometry.location.lat()}
                 lng={place.geometry.location.lng()}
                 key={place.place_id}
+                name={place.name}
+                isShown={this.state.isShown}
+                setIsShown={this.setIsShown}
+                id={place.place_id}
                 />
             )
           })}
@@ -75,6 +80,13 @@ class MapBlock extends Component {
       }
     });
   }
+
+  // eslint-disable-next-line no-undef
+  setIsShown = (trueOrFalse, markerId) => {
+    this.setState(() => {
+      return { isShown: { show: trueOrFalse, shownId: markerId } };
+    });
+}
 
 }
 
