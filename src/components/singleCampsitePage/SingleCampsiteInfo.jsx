@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as apis from "../../apis";
-import POIBoard from "../POIBoard";
+import POIBoard from "../POIBoard/POIBoard";
 import SingleCampsiteIntro from "./SingleCampsiteIntro";
 
 class SingleCampsiteInfo extends Component {

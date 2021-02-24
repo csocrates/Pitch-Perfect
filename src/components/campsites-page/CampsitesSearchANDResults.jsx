@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as apis from "../../apis";
 import SearchBar from "./SearchBar";
 import MapBlock from "./MapBlock";
-import CampsiteList from "../CampsiteList";
+import CampsiteList from "../campsiteList/CampsiteList";
 
 class CampsitesSearchANDResults extends Component {
   // eslint-disable-next-line no-undef

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import NearestCard from "./NearestCard";
+import pubIcon from "../../Images/pub-icon.png";
+import supermarketIcon from "../../Images/supermarket-icon.webp";
+import cafeIcon from "../../Images/cafe-icon.webp";
 
 class POIBoard extends Component {
   state = {
@@ -44,16 +47,22 @@ class POIBoard extends Component {
           type="Pub"
           name={nearestBars[0].name}
           distance={distanceInfo[0].distance.text}
+          onFoot={distanceInfo[0].duration.text}
+          icon={pubIcon}
         />
         <NearestCard
           type="Supermarket"
           name={nearestSupermarkets[0].name}
           distance={distanceInfo[1].distance.text}
+          onFoot={distanceInfo[1].duration.text}
+          icon={supermarketIcon}
         />
         <NearestCard
           type="Cafe"
           name={nearestCafes[0].name}
           distance={distanceInfo[2].distance.text}
+          onFoot={distanceInfo[2].duration.text}
+          icon={cafeIcon}
         />
       </div>
     );
