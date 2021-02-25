@@ -14,3 +14,7 @@
 .SearchBar {
   background: green;
 }
+
+.label__input {
+  background-color: pink;
+}

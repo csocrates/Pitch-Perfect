@@ -7,11 +7,12 @@ import Col from "react-bootstrap/Col";
 class SearchBar extends Component {
   // eslint-disable-next-line no-undef
   state = {
-    searchQuery: "",
+    searchQuery: ""
   };
 
   render() {
     const { searchQuery } = this.state;
+    const { placeholder } = this.props;
     return (
       <section className="SearchBar">
         {/* <form className="SearchBar__Input" onSubmit={this.handleSubmit}>
@@ -35,7 +36,7 @@ class SearchBar extends Component {
               <Col>
                 <Form.Control
                   type="campsiteSearch"
-                  placeholder="UK place or postcode"
+                  placeholder={placeholder}
                   onChange={this.handleTyping}
                   value={searchQuery}
                 />
