@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import goose from "../Images/goose.png";
+import goose from "../../Images/goose.png";
 
 const Header = ({ profilePicture = "../Images/goose.jpg" }) => {
   return (
