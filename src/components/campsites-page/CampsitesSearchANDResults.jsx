@@ -13,6 +13,7 @@ class CampsitesSearchANDResults extends Component {
     searchLocation: "",
     campsiteList: [],
     isListLoading: true,
+    placeholder: "Enter place or postcode",
   };
 
   componentDidMount() {
@@ -40,25 +41,34 @@ class CampsitesSearchANDResults extends Component {
   }
 
   render() {
+    const {
+      placeholder,
+      geoLocation,
+      campsiteList,
+      isListLoading,
+      searchLocation,
+    } = this.state;
     if (this.state.isLoading) return "Loading...";
-
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
         <section className="CampsitesSearchANDResults__search">
-          <SearchBar changeLocation={this.changeLocation} />
+          <SearchBar
+            changeLocation={this.changeLocation}
+            placeholder={placeholder}
+          />
         </section>
         <section className="CampsitesSearchANDResults__map">
           <MapBlock
-            geoLocation={this.state.geoLocation}
+            geoLocation={geoLocation}
             changeMap={this.props.changeMap}
-            campsiteList={this.state.campsiteList}
+            campsiteList={campsiteList}
           />
         </section>
         <section className="CampsitesSearchANDResults__list">
           <CampsiteList
-            isListLoading={this.state.isListLoading}
-            campsiteList={this.state.campsiteList}
-            searchLocation={this.state.searchLocation}
+            isListLoading={isListLoading}
+            campsiteList={campsiteList}
+            searchLocation={searchLocation}
           />
         </section>
       </div>
@@ -70,8 +80,22 @@ class CampsitesSearchANDResults extends Component {
     apis
       .fetchGeocode(searchLocation)
       .then((geoLocation) =>
-        this.setState({ searchLocation, geoLocation, isLoading: true })
-      );
+        this.setState({
+          searchLocation,
+          geoLocation,
+          isLoading: true,
+          placeholder: "Enter place or postcode",
+        })
+      )
+      .catch((err) => {
+        let message = null;
+        if (err.message === "Must be in British Isles") {
+          message = err.message;
+        }
+        this.setState(() => {
+          return { placeholder: message || "Invalid location -  try again" };
+        });
+      });
   };
 
   fetchCampsitesByLocation(map) {
@@ -81,6 +105,7 @@ class CampsitesSearchANDResults extends Component {
       query: "campsites",
       radius: 20000,
       fields: ["name", "geometry"],
+      strictbounds: true,
     };
     const service = new window.google.maps.places.PlacesService(map);
     service.textSearch(request, (results, status) => {
