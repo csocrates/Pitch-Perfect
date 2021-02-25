@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import CurrentLocationMarker from "../CurrentLocationMarker";
 import Marker from "../Marker";
+import "./MapBlock.css";
 const { REACT_APP_API_KEY } = process.env;
 
 class MapBlock extends Component {
@@ -22,7 +23,7 @@ class MapBlock extends Component {
     const { campsiteList } = this.props;
     if (this.state.isLoading) return "Loading";
     return (
-      <div style={{ height: "50vh", width: "100%" }}>
+      <div className="mapblock">
         <GoogleMapReact
           bootstrapURLKeys={{
             key: REACT_APP_API_KEY,

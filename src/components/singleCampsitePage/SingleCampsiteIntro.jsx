@@ -23,7 +23,7 @@ function SingleCampsiteIntro(props) {
 
       <Carousel className="SingleCampsiteIntro__photos">
         {props.photos.map((photo) => (
-          <Carousel.Item>
+          <Carousel.Item key={photo.getUrl()}>
             <img
               className="d-block w-100 SingleCampsiteIntro__photos__photo"
               src={photo.getUrl()}

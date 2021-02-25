@@ -2,7 +2,17 @@
   padding: 10px;
   display: grid;
   grid-template-columns: 3fr 1fr;
-  background: green;
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #0f9b0f,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #0f9b0f,
+    #000000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .App__HeaderTitle {
@@ -19,6 +29,8 @@
 
 .App__HeaderProfilePic {
   grid-column: 2;
-  width: 100%;
-  border-radius: 50%;
+  height: 5rem;
+  margin: au;
+  /* width: 100%; */
+  /* border-radius: 50%; */
 }
