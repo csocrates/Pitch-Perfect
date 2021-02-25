@@ -12,6 +12,7 @@ class CampsitesSearchANDResults extends Component {
     geoLocation: {},
     searchLocation: "",
     campsiteList: [],
+    placeholder: "Enter place or postcode"
   };
 
   componentDidMount() {
@@ -40,12 +41,15 @@ class CampsitesSearchANDResults extends Component {
   }
 
   render() {
+    const { placeholder } = this.state;
     if (this.state.isLoading) return "Loading";
-
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
         <section className="CampsitesSearchANDResults__search">
-          <SearchBar changeLocation={this.changeLocation} />
+          <SearchBar
+            changeLocation={this.changeLocation}
+            placeholder={placeholder}
+          />
         </section>
         <section className="CampsitesSearchANDResults__map">
           <MapBlock
@@ -69,8 +73,22 @@ class CampsitesSearchANDResults extends Component {
     apis
       .fetchGeocode(searchLocation)
       .then((geoLocation) =>
-        this.setState({ searchLocation, geoLocation, isLoading: true })
-      );
+        this.setState({
+          searchLocation,
+          geoLocation,
+          isLoading: true,
+          placeholder: "Enter place or postcode"
+        })
+    )
+      .catch((err) => {
+        let message = null;
+        if (err.message === 'Must be in British Isles') {
+          message = err.message
+        }
+        this.setState(() => {
+        return {placeholder: message || 'Invalid location -  try again'}
+      })
+    })
   };
 
   fetchCampsitesByLocation(map) {
@@ -78,13 +96,15 @@ class CampsitesSearchANDResults extends Component {
     const request = {
       location: map.center,
       query: "campsites",
-      radius: "500",
+      radius: 50000,
       fields: ["name", "geometry"],
+      strictbounds: true
     };
     const service = new window.google.maps.places.PlacesService(map);
     service.textSearch(request, (results, status) => {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
         for (let i = 0; i < results.length; i++) {
+          console.log(results.length)
           campsiteList.push(results[i]);
         }
         this.setState({ isLoading: false, campsiteList });
