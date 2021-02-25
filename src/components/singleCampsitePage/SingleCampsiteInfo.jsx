@@ -37,7 +37,7 @@ class SingleCampsiteInfo extends Component {
   render() {
     if (this.state.isLoading) return "Loading";
     return (
-      <main classname="singleCampsitePage__singleCampsiteInfo">
+      <main className="singleCampsitePage__singleCampsiteInfo">
         <section className="singleCampsiteInfo__singleCampsiteIntro">
           <SingleCampsiteIntro
             formatted_address={this.state.formatted_address}
