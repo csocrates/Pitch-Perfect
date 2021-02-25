@@ -1,5 +1,5 @@
 import React from "react";
-import goose from "../Images/goose.png";
+import goose from "../../Images/goose.png";
 
 const CurrentLocationMarker = () => {
   return (
