@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import POIBoard from "../POIBoard/POIBoard";
 import SingleCampsiteIntro from "./SingleCampsiteIntro";
-import LinkToHomepage from '.././LinkToHomepage'
+import LinkToHomepage from ".././LinkToHomepage";
 
 class SingleCampsiteInfo extends Component {
   state = {
@@ -46,7 +46,13 @@ class SingleCampsiteInfo extends Component {
 
   render() {
     if (this.state.isLoading) return "Loading";
-    if (this.state.googleAPIError) return <p>{this.state.googleAPIError}</p>;
+    if (this.state.googleAPIError)
+      return (
+        <>
+          <p>{this.state.googleAPIError}</p>
+          <LinkToHomepage />
+        </>
+      );
     return (
       <main className="singleCampsitePage__singleCampsiteInfo">
         <section className="singleCampsiteInfo__singleCampsiteIntro">
@@ -65,7 +71,6 @@ class SingleCampsiteInfo extends Component {
         </section>
         <LinkToHomepage />
       </main>
-      
     );
   }
 }
