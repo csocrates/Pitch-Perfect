@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NearestCard from "./NearestCard";
-import pubIcon from "../../Images/pub-icon.png";
+import pubIcon from "../../Images/beer-icon.png";
 import supermarketIcon from "../../Images/supermarket-icon.webp";
 import cafeIcon from "../../Images/cafe-icon.webp";
 
@@ -42,7 +42,7 @@ class POIBoard extends Component {
 
     if (isLoading) return "Loading...";
     return (
-      <div>
+      <div className="poiBoard">
         <NearestCard
           type="Pub"
           name={nearestBars[0].name}

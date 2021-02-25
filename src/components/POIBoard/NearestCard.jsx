@@ -1,28 +1,38 @@
 import React from "react";
-import walkingIcon from "../../Images/walking-icon.png";
+import walkingIcon from "../../Images/walking-icon.webp";
+import roadIcon from "../../Images/road-icon.png";
 import "./POIBoard.css";
 
 const NearestCard = ({ type, name, distance, onFoot, icon }) => {
   return (
-    <div className="nearestCard">
-      <p>
+    <section className={`nearest${type}Card`}>
+      <img
+        className="nearestIcon"
+        src={icon}
+        alt={type}
+        style={{ width: "100px", height: "auto", padding: "10px" }}
+      />
+
+      <p className="name">{name}</p>
+
+      <p className="distance">
         <img
-          src={icon}
-          alt={type}
-          style={{ width: "100px", height: "auto", padding: "10px" }}
+          src={roadIcon}
+          alt="distance"
+          style={{ width: "20px", height: "auto" }}
         />
-        {name}
+        {distance}
       </p>
-      <p>{distance}</p>
-      <p>
+
+      <div className="walking-time">
         <img
           src={walkingIcon}
           alt="On Foot"
-          style={{ width: "60px", height: "auto" }}
+          style={{ width: "30px", height: "auto" }}
         />
         {onFoot}
-      </p>
-    </div>
+      </div>
+    </section>
   );
 };
 

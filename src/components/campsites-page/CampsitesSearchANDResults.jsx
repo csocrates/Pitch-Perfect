@@ -3,6 +3,7 @@ import * as apis from "../../apis";
 import SearchBar from "./SearchBar";
 import MapBlock from "./MapBlock";
 import CampsiteList from "../campsiteList/CampsiteList";
+import "./CampsitesSearchANDResults.css";
 
 class CampsitesSearchANDResults extends Component {
   // eslint-disable-next-line no-undef
@@ -43,16 +44,22 @@ class CampsitesSearchANDResults extends Component {
 
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
-        <SearchBar changeLocation={this.changeLocation} />
-        <MapBlock
-          geoLocation={this.state.geoLocation}
-          changeMap={this.props.changeMap}
-          campsiteList={this.state.campsiteList}
-        />
-        <CampsiteList
-          isLoading={this.state.isLoading}
-          campsiteList={this.state.campsiteList}
-        />
+        <section className="CampsitesSearchANDResults__search">
+          <SearchBar changeLocation={this.changeLocation} />
+        </section>
+        <section className="CampsitesSearchANDResults__map">
+          <MapBlock
+            geoLocation={this.state.geoLocation}
+            changeMap={this.props.changeMap}
+            campsiteList={this.state.campsiteList}
+          />
+        </section>
+        <section className="CampsitesSearchANDResults__list">
+          <CampsiteList
+            isLoading={this.state.isLoading}
+            campsiteList={this.state.campsiteList}
+          />
+        </section>
       </div>
     );
   }
