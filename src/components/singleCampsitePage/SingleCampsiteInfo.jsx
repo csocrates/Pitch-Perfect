@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LinkToHomepage from "../LinkToHomepage";
 import SingleCampsiteIntro from "./SingleCampsiteIntro";
 
 class SingleCampsiteInfo extends Component {
@@ -46,6 +47,7 @@ class SingleCampsiteInfo extends Component {
           reviews={this.state.reviews}
           name={this.state.name}
         />
+        <LinkToHomepage />
       </>
     );
   }
