@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Router } from "@reach/router";
 import CampsitesSearchANDResults from "./CampsitesSearchANDResults";
 import SingleCampsitePage from "../singleCampsitePage/SingleCampsitePage";
+import PageNotFound from './PageNotFound'
 
 class CampsitesPage extends Component {
   // eslint-disable-next-line no-undef
@@ -19,6 +20,7 @@ class CampsitesPage extends Component {
           />
 
           <SingleCampsitePage path="/campsite/*" map={this.state.map} />
+          <PageNotFound default />
         </Router>
       </div>
     );
