@@ -69,7 +69,7 @@ class CampsitesSearchANDResults extends Component {
     apis
       .fetchGeocode(searchLocation)
       .then((geoLocation) =>
-        this.setState({ searchLocation, geoLocation, isLoading: false })
+        this.setState({ searchLocation, geoLocation, isLoading: true })
       );
   };
 
