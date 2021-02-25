@@ -1,6 +1,8 @@
 .App__Header {
   padding: 10px;
   display: grid;
+  position: sticky;
+  top: 0;
   grid-template-columns: 3fr 1fr;
   background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -30,7 +32,11 @@
 .App__HeaderProfilePic {
   grid-column: 2;
   height: 5rem;
-  margin: au;
+  margin: auto;
   /* width: 100%; */
   /* border-radius: 50%; */
+}
+
+.App__HeaderTitle:visited .App__HeaderTitle:focus .App__HeaderTitle:active{
+  text-decoration: none;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
-import CurrentLocationMarker from "../CurrentLocationMarker";
-import Marker from "../Marker";
+import CurrentLocationMarker from "../markers/CurrentLocationMarker";
+import Marker from "../markers/Marker";
 import "./MapBlock.css";
 const { REACT_APP_API_KEY } = process.env;
 

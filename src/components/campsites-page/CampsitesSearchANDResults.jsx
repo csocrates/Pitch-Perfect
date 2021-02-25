@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import * as apis from "../../apis";
 import SearchBar from "./SearchBar";
 import MapBlock from "./MapBlock";
-import CampsiteList from "../CampsiteList";
-import './CampsitesSearchANDResults.css'
+import CampsiteList from "../campsiteList/CampsiteList";
+import "./CampsitesSearchANDResults.css";
 
 class CampsitesSearchANDResults extends Component {
   // eslint-disable-next-line no-undef
-  state = { 
-    isLoading: true, 
-    geoLocation: {}, 
+  state = {
+    isLoading: true,
+    geoLocation: {},
     searchLocation: "",
-    campsiteList: []
+    campsiteList: [],
   };
 
   componentDidMount() {
@@ -25,13 +25,13 @@ class CampsitesSearchANDResults extends Component {
   }
 
   componentDidUpdate(prevProps) {
-  if (this.state.isLoading) {
-    this.setState({isLoading: false})
-  }
+    if (this.state.isLoading) {
+      this.setState({ isLoading: false });
+    }
     if (!prevProps.map && this.props.map) {
       this.fetchCampsitesByLocation(this.props.map);
     } else if (
-      this.props.map && 
+      this.props.map &&
       this.props.map.center.lat() !== prevProps.map.center.lat() &&
       this.props.map.center.lng() !== prevProps.map.center.lng()
     ) {
@@ -41,6 +41,7 @@ class CampsitesSearchANDResults extends Component {
 
   render() {
     if (this.state.isLoading) return "Loading";
+
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
         <section className="CampsitesSearchANDResults__search">
@@ -68,7 +69,7 @@ class CampsitesSearchANDResults extends Component {
     apis
       .fetchGeocode(searchLocation)
       .then((geoLocation) =>
-        this.setState({ searchLocation, geoLocation, isLoading: true })
+        this.setState({ searchLocation, geoLocation, isLoading: false })
       );
   };
 
@@ -90,7 +91,6 @@ class CampsitesSearchANDResults extends Component {
       }
     });
   }
-
 }
 
 export default CampsitesSearchANDResults;
