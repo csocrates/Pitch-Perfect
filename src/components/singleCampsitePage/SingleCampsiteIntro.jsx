@@ -8,6 +8,7 @@ import {
 import Carousel from "react-bootstrap/Carousel";
 
 function SingleCampsiteIntro(props) {
+  if (!props.photos) return <p>No photos found for this campsite</p>;
   return (
     <div className="SingleCampsiteIntro">
       <h2 className="SingleCampsiteIntro__name">{props.name}</h2>

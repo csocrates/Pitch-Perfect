@@ -36,3 +36,7 @@
   /* width: 100%; */
   /* border-radius: 50%; */
 }
+
+.App__HeaderTitle:visited .App__HeaderTitle:focus .App__HeaderTitle:active{
+  text-decoration: none;
+}
