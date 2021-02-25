@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as apis from "../../apis";
 import SingleCampsiteIntro from "./SingleCampsiteIntro";
 
 class SingleCampsiteInfo extends Component {
@@ -16,10 +15,9 @@ class SingleCampsiteInfo extends Component {
   };
 
   componentDidMount() {
-    // apis.fetchPlaceDetailById(this.props.place_id).then(console.log);
     const service = new window.google.maps.places.PlacesService(this.props.map);
     service.getDetails({ placeId: this.props.place_id }, (place, status) => {
-      if (status == window.google.maps.places.PlacesServiceStatus.OK) {
+      if (status === window.google.maps.places.PlacesServiceStatus.OK) {
         this.setState({
           isLoading: false,
           formatted_address: place.formatted_address,

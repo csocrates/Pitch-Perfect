@@ -5,4 +5,7 @@
 .goose-marker {
   width: 30px;
   height: auto;
+  position: relative;
+  top: -15px;
+  left: -15px;
 }

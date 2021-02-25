@@ -1,0 +1,17 @@
+.campsitepage__CampsitesSearchANDResults {
+  display: grid;
+  grid-template-rows: 20vh 34vh 32vh;
+}
+
+.CampsitesSearchANDResults__search {
+  grid-row: 1;
+}
+
+.CampsitesSearchANDResults__map {
+  grid-row: 2;
+}
+
+.CampsitesSearchANDResults__list {
+  grid-row: 3;
+  overflow-y: scroll;
+}
