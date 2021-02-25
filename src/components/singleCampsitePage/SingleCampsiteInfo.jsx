@@ -37,18 +37,22 @@ class SingleCampsiteInfo extends Component {
   render() {
     if (this.state.isLoading) return "Loading";
     return (
-      <>
-        <SingleCampsiteIntro
-          formatted_address={this.state.formatted_address}
-          business_status={this.state.business_status}
-          formatted_phone_number={this.state.formatted_phone_number}
-          rating={this.state.rating}
-          photos={this.state.photos}
-          reviews={this.state.reviews}
-          name={this.state.name}
-        />
-        <POIBoard map={this.props.map} location={this.state.location} />
-      </>
+      <main classname="singleCampsitePage__singleCampsiteInfo">
+        <section className="singleCampsiteInfo__singleCampsiteIntro">
+          <SingleCampsiteIntro
+            formatted_address={this.state.formatted_address}
+            business_status={this.state.business_status}
+            formatted_phone_number={this.state.formatted_phone_number}
+            rating={this.state.rating}
+            photos={this.state.photos}
+            reviews={this.state.reviews}
+            name={this.state.name}
+          />
+        </section>
+        <section className="singleCampsiteInfo__POIBoard">
+          <POIBoard map={this.props.map} location={this.state.location} />
+        </section>
+      </main>
     );
   }
 }

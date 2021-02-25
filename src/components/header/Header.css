@@ -1,6 +1,8 @@
 .App__Header {
   padding: 10px;
   display: grid;
+  position: sticky;
+  top: 0;
   grid-template-columns: 3fr 1fr;
   background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(
