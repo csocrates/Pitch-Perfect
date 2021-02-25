@@ -45,6 +45,7 @@ class SingleCampsiteInfo extends Component {
   }
 
   render() {
+    console.log(this.state.location, 'location in render')
     if (this.state.isLoading) return "Loading";
     if (this.state.googleAPIError)
       return (
@@ -69,7 +70,7 @@ class SingleCampsiteInfo extends Component {
         <section className="singleCampsiteInfo__POIBoard">
           <POIBoard map={this.props.map} location={this.state.location} />
         </section>
-        <LinkToHomepage />
+        <LinkToHomepage/>
       </main>
     );
   }
