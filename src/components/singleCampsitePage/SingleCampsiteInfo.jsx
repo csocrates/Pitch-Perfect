@@ -45,7 +45,6 @@ class SingleCampsiteInfo extends Component {
   }
 
   render() {
-    console.log(this.state.location, 'location in render')
     if (this.state.isLoading) return "Loading";
     if (this.state.googleAPIError)
       return (

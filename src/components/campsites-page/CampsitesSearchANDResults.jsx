@@ -20,9 +20,12 @@ class CampsitesSearchANDResults extends Component {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
-      this.setState({ geoLocation: { lat, lng }, isLoading: false });
+      this.setState(() => { 
+        return {geoLocation: { lat, lng }, isLoading: false }
+      }, () => {
+        if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
+      });
     });
-    if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
   }
 
   componentDidUpdate(prevProps) {
@@ -104,7 +107,6 @@ class CampsitesSearchANDResults extends Component {
     service.textSearch(request, (results, status) => {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
         for (let i = 0; i < results.length; i++) {
-          console.log(results.length)
           campsiteList.push(results[i]);
         }
         this.setState({ isLoading: false, campsiteList });
