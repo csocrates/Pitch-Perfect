@@ -13,6 +13,7 @@ class MapBlock extends Component {
     centre: {},
     campsiteList: [],
     isShown: { show: true, shownId: "" },
+    needsUpdating: false
   };
 
   componentDidMount() {

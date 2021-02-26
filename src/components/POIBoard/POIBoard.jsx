@@ -81,7 +81,6 @@ class POIBoard extends Component {
       rankBy: window.google.maps.places.RankBy.DISTANCE,
     };
     service.nearbySearch(barRequest, (results, status) => {
-      console.log("bar results", results, status);
       if (status == window.google.maps.places.PlacesServiceStatus.OK) {
         for (let i = 0; i < 3; i++) {
           nearestBars.push(results[i]);
@@ -121,7 +120,6 @@ class POIBoard extends Component {
   }
 
   findDistanceBetween(origin, destinations) {
-    console.log("FINDDISTANCE", origin, destinations);
     const service = new window.google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {
