@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link } from '@reach/router'
-import './LinkToHomepage.css'
+import React from "react";
+import { Link } from "@reach/router";
+import "./LinkToHomepage.css";
 
 const LinkToHomepage = () => {
-return (
+  return (
     <div>
-        <Link to="/">
+      <Link to="/">
         <button className="homepage-button">Return to homepage!</button>
-        </Link>
+      </Link>
     </div>
-)
-}
+  );
+};
 
 export default LinkToHomepage;

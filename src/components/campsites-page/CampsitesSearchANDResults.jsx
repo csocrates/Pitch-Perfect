@@ -12,19 +12,23 @@ class CampsitesSearchANDResults extends Component {
     geoLocation: {},
     searchLocation: "",
     campsiteList: [],
-    placeholder: "Enter place or postcode"
+    placeholder: "Enter place or postcode",
   };
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
+      console.log("navigate", position, this.state.isLoading);
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
-      this.setState(() => { 
-        return {geoLocation: { lat, lng }, isLoading: false }
-      }, () => {
-        if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
-      });
+      this.setState(
+        () => {
+          return { geoLocation: { lat, lng }, isLoading: false };
+        },
+        () => {
+          if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
+        }
+      );
     });
   }
 
@@ -80,18 +84,18 @@ class CampsitesSearchANDResults extends Component {
           searchLocation,
           geoLocation,
           isLoading: true,
-          placeholder: "Enter place or postcode"
+          placeholder: "Enter place or postcode",
         })
-    )
+      )
       .catch((err) => {
         let message = null;
-        if (err.message === 'Must be in British Isles') {
-          message = err.message
+        if (err.message === "Must be in British Isles") {
+          message = err.message;
         }
         this.setState(() => {
-        return {placeholder: message || 'Invalid location -  try again'}
-      })
-    })
+          return { placeholder: message || "Invalid location -  try again" };
+        });
+      });
   };
 
   fetchCampsitesByLocation(map) {
@@ -101,7 +105,7 @@ class CampsitesSearchANDResults extends Component {
       query: "campsites",
       radius: 50000,
       fields: ["name", "geometry"],
-      strictbounds: true
+      strictbounds: true,
     };
     const service = new window.google.maps.places.PlacesService(map);
     service.textSearch(request, (results, status) => {

@@ -47,3 +47,130 @@ const { REACT_APP_API_KEY } = process.env;
 
 - Create .env and env.js files
 - Ask team for details
+
+# Database
+
+- users: username (str, primary key), password (str, notNull), firstname (str, notNull), lastname (str, notNull), avatar_url (str, nullable)
+
+- owners: owner_username (str, primary key), password (str, notNull), firstname (str, notNull), lastname (str, notNull), avatar_url (str, nullable)
+
+- campsites: place_id (serial, primary_key), ownername (str, foreign key), campsite_name (str, notNull), campsite_address (str, notNull), booked_dates (str, text), votes (int, notNull)
+
+- camping_history: history_id (serial, primary key), username (foreign key), date (timestamp, notNull), place_id (str, notNull), votes (int, nullable)
+
+- comments: comment_id (serial, primary key), username (foreign key), campsite_name (str, notNull), comment (str, notNull), date (timestamp, notNull)
+
+# APIs
+
+## /users
+
+```
+    GET /users/:user_id
+    exampleResponse
+    {
+        user: {
+            username,
+            camping_history: [{date, campsite_name, votes}]
+        }
+    }
+
+
+    POST /users
+    examplePostBody
+    {
+        username,
+        password,
+        firstname,
+        lastname
+    }
+    exampleResponse
+    {
+        user: {
+            username
+        }
+    }
+```
+
+## /comments
+
+```
+    GET /comments/:place_id
+    exampleResponse
+    {
+        comments: [{username, comment}]
+    }
+
+    POST /comments/:place_id
+    examplePostBody
+    {
+        username,
+        campsite_name,
+        comment,
+        date
+    }
+    exampleResponse
+    {
+        comment: {username, comment, date}
+    }
+```
+
+## /camping_history
+
+```
+    POST /camping_history
+    examplePostBody
+    {
+        username,
+        date,
+        place_id,
+        votes
+    }
+    exampleResponse
+    {
+        camping_history: {
+            username,
+            date,
+            campsite_name,
+            votes
+        }
+    }
+```
+
+## /campsites
+
+```
+    PATCH /campsites/:place_id
+    examplePostBody
+    {
+        place_id,
+        votes
+    }
+
+    {
+        votes: {votes}
+    }
+
+    GET /campsites/:place_id
+    exampleResponse
+    {
+        campsite: {
+            campsite_name,
+            owner_name,
+            campsite_address,
+            booked_dates,
+            votes,
+        }
+    }
+
+    GET /campsites/:owner_id
+    exampleResponse
+    {
+        campsites: [{
+            campsite_name,
+            owner_name,
+            campsite_address,
+            booked_dates,
+            votes,
+        }]
+    }
+```
