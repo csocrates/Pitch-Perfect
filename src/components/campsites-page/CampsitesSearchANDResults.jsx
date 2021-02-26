@@ -16,12 +16,13 @@ class CampsitesSearchANDResults extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
+      console.log("navigate", position, this.state.isLoading);
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
       this.setState({ geoLocation: { lat, lng }, isLoading: false });
+      if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
     });
-    if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
   }
 
   componentDidUpdate(prevProps) {
