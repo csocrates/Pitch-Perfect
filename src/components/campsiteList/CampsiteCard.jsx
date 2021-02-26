@@ -1,6 +1,7 @@
 import React from "react";
 import "./campsiteCard.css";
 import { Link } from "@reach/router";
+import stockCampsite from "../../Images/stock-campsite.jpg";
 
 const campsiteCard = ({ campsite }) => {
   return (
@@ -14,8 +15,8 @@ const campsiteCard = ({ campsite }) => {
       </div>
       <img
         className="campsite-img"
-        src={campsite.photos ? campsite.photos[0].getUrl() : null}
-        alt="lovely campsite"
+        src={campsite.photos ? campsite.photos[0].getUrl() : stockCampsite}
+        alt={"lovely campsite"}
       />
     </section>
   );

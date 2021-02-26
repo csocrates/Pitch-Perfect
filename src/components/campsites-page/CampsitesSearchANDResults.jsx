@@ -12,6 +12,7 @@ class CampsitesSearchANDResults extends Component {
     geoLocation: {},
     searchLocation: "",
     campsiteList: [],
+    isListLoading: true,
     placeholder: "Enter place or postcode",
   };
 
@@ -21,20 +22,15 @@ class CampsitesSearchANDResults extends Component {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
-      this.setState(
-        () => {
-          return { geoLocation: { lat, lng }, isLoading: false };
-        },
-        () => {
-          if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
-        }
-      );
+      this.setState({ geoLocation: { lat, lng }, isLoading: false }, () => {
+        if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
+      });
     });
   }
 
   componentDidUpdate(prevProps) {
     if (this.state.isLoading) {
-      this.setState({ isLoading: false });
+      this.setState({ isLoading: false, isListLoading: true });
     }
     if (!prevProps.map && this.props.map) {
       this.fetchCampsitesByLocation(this.props.map);
@@ -48,8 +44,14 @@ class CampsitesSearchANDResults extends Component {
   }
 
   render() {
-    const { placeholder } = this.state;
-    if (this.state.isLoading) return "Loading";
+    const {
+      placeholder,
+      geoLocation,
+      campsiteList,
+      isListLoading,
+      searchLocation,
+    } = this.state;
+    if (this.state.isLoading) return "Loading...";
     return (
       <div className="campsitepage__CampsitesSearchANDResults">
         <section className="CampsitesSearchANDResults__search">
@@ -60,15 +62,16 @@ class CampsitesSearchANDResults extends Component {
         </section>
         <section className="CampsitesSearchANDResults__map">
           <MapBlock
-            geoLocation={this.state.geoLocation}
+            geoLocation={geoLocation}
             changeMap={this.props.changeMap}
-            campsiteList={this.state.campsiteList}
+            campsiteList={campsiteList}
           />
         </section>
         <section className="CampsitesSearchANDResults__list">
           <CampsiteList
-            isLoading={this.state.isLoading}
-            campsiteList={this.state.campsiteList}
+            isListLoading={isListLoading}
+            campsiteList={campsiteList}
+            searchLocation={searchLocation}
           />
         </section>
       </div>
@@ -103,17 +106,26 @@ class CampsitesSearchANDResults extends Component {
     const request = {
       location: map.center,
       query: "campsites",
-      radius: 50000,
+      radius: 20000,
       fields: ["name", "geometry"],
       strictbounds: true,
     };
     const service = new window.google.maps.places.PlacesService(map);
     service.textSearch(request, (results, status) => {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-        for (let i = 0; i < results.length; i++) {
-          campsiteList.push(results[i]);
+        for (let i = 0; i < 10; i++) {
+          if (
+            window.google.maps.geometry.spherical.computeDistanceBetween(
+              results[i].geometry.location,
+              map.center
+            ) < request.radius
+          ) {
+            if (!results[i].name.includes("Motorhome")) {
+              campsiteList.push(results[i]);
+            }
+          }
         }
-        this.setState({ isLoading: false, campsiteList });
+        this.setState({ isListLoading: false, campsiteList });
       }
     });
   }

@@ -22,11 +22,12 @@ class POIBoard extends Component {
   componentDidUpdate() {
     const { location } = this.props;
     const { nearestBars, nearestSupermarkets, nearestCafes } = this.state;
+
     if (this.state.placesLoaded) {
       this.findDistanceBetween(location, [
-        nearestBars[0].geometry.location,
-        nearestSupermarkets[0].geometry.location,
-        nearestCafes[0].geometry.location,
+        nearestBars[0]?.geometry.location,
+        nearestSupermarkets[0]?.geometry.location,
+        nearestCafes[0]?.geometry.location,
       ]);
     }
   }
@@ -75,7 +76,8 @@ class POIBoard extends Component {
     const service = new window.google.maps.places.PlacesService(this.props.map);
     const barRequest = {
       location,
-      type: "bar",
+      // radius: 50000,
+      type: ["bar"],
       rankBy: window.google.maps.places.RankBy.DISTANCE,
     };
     service.nearbySearch(barRequest, (results, status) => {
@@ -86,7 +88,7 @@ class POIBoard extends Component {
       }
       const supermarketRequest = {
         location,
-        type: "supermarket",
+        type: ["supermarket"],
         rankBy: window.google.maps.places.RankBy.DISTANCE,
       };
       service.nearbySearch(supermarketRequest, (results, status) => {
@@ -97,7 +99,7 @@ class POIBoard extends Component {
         }
         const cafeRequest = {
           location,
-          type: "cafe",
+          type: ["cafe"],
           rankBy: window.google.maps.places.RankBy.DISTANCE,
         };
         service.nearbySearch(cafeRequest, (results, status) => {

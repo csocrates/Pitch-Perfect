@@ -9,7 +9,7 @@ class MapBlock extends Component {
   // eslint-disable-next-line no-undef
   state = {
     isLoading: true,
-    zoom: 10,
+    zoom: 9,
     centre: {},
     campsiteList: [],
     isShown: { show: true, shownId: "" },
