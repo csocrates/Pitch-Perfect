@@ -58,7 +58,7 @@ const { REACT_APP_API_KEY } = process.env;
 
 - camping_history: history_id (serial, primary key), username (foreign key), date (timestamp, notNull), place_id (str, notNull), votes (int, nullable)
 
-- comments: comment_id (serial, primary key), username (foreign key), campsite_name (str, notNull), comment (str, notNull), date (timestamp, notNull)
+- reviews: review_id (serial, primary key), username (foreign key), campsite_name (str, notNull), review (str, notNull), date (timestamp, notNull)
 
 # APIs
 
@@ -91,26 +91,26 @@ const { REACT_APP_API_KEY } = process.env;
     }
 ```
 
-## /comments
+## /reviews
 
 ```
-    GET /comments/:place_id
+    GET /reviews/:place_id
     exampleResponse
     {
-        comments: [{username, comment}]
+        reviews: [{username, review}]
     }
 
-    POST /comments/:place_id
+    POST /reviews/:place_id
     examplePostBody
     {
         username,
         campsite_name,
-        comment,
+        review,
         date
     }
     exampleResponse
     {
-        comment: {username, comment, date}
+        review: {username, review, date}
     }
 ```
 
