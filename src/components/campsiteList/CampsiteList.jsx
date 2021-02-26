@@ -3,7 +3,6 @@ import "./campsiteCard.css";
 import relaxedGoose from "../../Images/relaxed-goose.png";
 
 const CampsiteList = ({ isListLoading, campsiteList, searchLocation }) => {
-  console.log(isListLoading);
   if (isListLoading) return "Loading...";
   if (searchLocation && campsiteList.length === 0)
     return (
