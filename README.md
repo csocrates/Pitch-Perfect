@@ -162,12 +162,13 @@ const { REACT_APP_API_KEY } = process.env;
         }
     }
 
-    GET /campsites/:owner_id
+    GET /:owner_username/campsites
     exampleResponse
     {
+        owner_username,
         campsites: [{
             campsite_name,
-            owner_name,
+
             campsite_address,
             booked_dates,
             votes,
