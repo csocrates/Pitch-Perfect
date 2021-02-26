@@ -54,11 +54,11 @@ const { REACT_APP_API_KEY } = process.env;
 
 - owners: owner_username (str, primary key), password (str, notNull), firstname (str, notNull), lastname (str, notNull), avatar_url (str, nullable)
 
-- campsites: place_id (serial, primary_key), ownername (str, foreign key), campsite_name (str, notNull), campsite_address (str, notNull), booked_dates (str, text), votes (int, notNull)
+- campsites: place_id (serial, primary_key), ownername (str, foreign key), campsite_name (str, notNull), campsite_address (str, notNull), booked_dates (text), votes (float, notNull)
 
-- camping_history: history_id (serial, primary key), username (foreign key), date (timestamp, notNull), place_id (str, notNull), votes (int, nullable)
+- camping_history: history_id (serial, primary key), username (foreign key), date (timestamp, notNull), place_id (foreign key, str, notNull), votes (float, nullable)
 
-- reviews: review_id (serial, primary key), username (foreign key), campsite_name (str, notNull), review (str, notNull), date (timestamp, notNull)
+- reviews: review_id (serial, primary key), username (foreign key), campsite_name (str, notNull), review (str, notNull), created_at (timestamp, notNull)
 
 # APIs
 
@@ -106,11 +106,11 @@ const { REACT_APP_API_KEY } = process.env;
         username,
         campsite_name,
         review,
-        date
+        created_at
     }
     exampleResponse
     {
-        review: {username, review, date}
+        review: {username, review, created_at}
     }
 ```
 
