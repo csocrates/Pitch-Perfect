@@ -16,7 +16,17 @@
 
 .Main {
   margin: auto;
+  display: grid;
+  grid-template-rows: 20vh 75vh;
 }
+.App__Header {
+  grid-row: 1;
+}
+.campsitepage__CampsitesSearchANDResults {
+  grid-row: 2;
+  margin-top: 20px;
+}
+
 @media only screen and (min-width: 768px), (min-device-width: 780px) {
   .Main {
     width: 90%;
@@ -40,7 +50,7 @@
   .Main {
     width: 100%;
     display: grid;
-    grid-template-rows: 25% 75%;
+    grid-template-rows: 25vh 75vh;
     /* grid-template-rows: auto; */
     /* grid-template-areas:
       "header header"

@@ -3,25 +3,30 @@
 }
 
 .SearchBar__label {
-  font-size: 2rem;
+  font-size: 20px;
   width: 100%;
-  text-align: center;
+  text-align: left;
   font-weight: 600;
-  color: white; /* fallback for old browsers */
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
 }
 
 .SearchBar {
-  background: green;
+  background: none;
 }
 
 .label__input {
   background-color: pink;
 }
+@media only screen and (min-width: 768px), (min-device-width: 768px) {
+  .SearchBar {
+    width: 60%;
+  }
+}
 
 @media only screen and (min-width: 1080px), (min-device-width: 1080px) {
   .SearchBar {
     background: none;
+    width: 60%;
   }
   .SearchBar__label {
     text-align: left;
@@ -31,6 +36,7 @@
 @media only screen and (min-width: 1380px), (min-device-width: 1380px) {
   .SearchBar {
     background: none;
+    width: 150%;
   }
   .SearchBar__label {
     text-align: left;
