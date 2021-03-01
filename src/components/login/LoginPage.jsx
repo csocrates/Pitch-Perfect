@@ -1,0 +1,50 @@
+import React, { Component } from "react";
+import WelcomePanel from "./WelcomePanel";
+import SelectOwnerOrUser from "./SelectOwnerOrUser";
+import ShowLoginForm from "./showLoginForm";
+import LoginForm from "./LoginForm";
+import RegisterButton from "./RegisterButton";
+
+class LoginPage extends Component {
+  state = { isUser: true, registered: false, showLoginForm: false };
+  render() {
+    const { username, setUser } = this.props;
+    const { isUser, registered, showLoginForm } = this.state;
+    if (username) return <WelcomePanel setUser={setUser} username={username} />;
+    if (!username)
+      return (
+        <div>
+          <ShowLoginForm showLogin={this.showLogin} />
+          <SelectOwnerOrUser
+            toggleForm={this.changeOwnerOrUser}
+            isUser={isUser}
+            showLogin={this.state.showLoginForm}
+          />
+          <LoginForm
+            setUser={setUser}
+            isUser={true}
+            showLoginForm={showLoginForm}
+          />
+          {showLoginForm ? (
+            <RegisterButton
+              isUser={isUser}
+              toggleForm={this.changeOwnerOrUser}
+              registered={registered}
+            />
+          ) : null}
+        </div>
+      );
+  }
+  changeOwnerOrUser = () => {
+    this.setState((currentState) => {
+      return { isUser: !currentState.isUser };
+    });
+  };
+  showLogin = () => {
+    this.setState((currentState) => {
+      return { showLoginForm: !currentState.showLoginForm };
+    });
+  };
+}
+
+export default LoginPage;
