@@ -4,3 +4,11 @@
   margin: auto;
   margin-bottom: 20px;
 }
+
+@media only screen and (min-width: 1380px), (min-device-width: 1380px) {
+  .mapblock {
+    height: 73vh;
+    width: auto;
+    margin: 10px;
+  }
+}

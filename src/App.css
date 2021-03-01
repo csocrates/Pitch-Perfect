@@ -13,3 +13,44 @@
 * {
   scroll-behavior: smooth;
 }
+
+.Main {
+  margin: auto;
+}
+@media only screen and (min-width: 768px), (min-device-width: 780px) {
+  .Main {
+    width: 90%;
+  }
+}
+@media only screen and (min-width: 1080px), (min-device-width: 1080px) {
+  .Main {
+    width: 80%;
+    display: grid;
+    grid-template-rows: 25vh 75vh;
+  }
+  .App__Header {
+    grid-row: 1;
+  }
+  .campsitepage__CampsitesSearchANDResults {
+    grid-row: 2;
+    margin-top: 20px;
+  }
+}
+@media only screen and (min-width: 1380px), (min-device-width: 1380px) {
+  .Main {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 25% 75%;
+    /* grid-template-rows: auto; */
+    /* grid-template-areas:
+      "header header"
+      "map" "campsiteList"; */
+  }
+  .App__Header {
+    grid-row: 1;
+  }
+  .campsitepage__CampsitesSearchANDResults {
+    grid-row: 2;
+    margin-top: 20px;
+  }
+}

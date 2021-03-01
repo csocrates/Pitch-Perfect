@@ -15,6 +15,7 @@
     #0f9b0f,
     #000000
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* grid-area: header; */
 }
 
 .App__HeaderTitle {
@@ -37,6 +38,33 @@
   /* border-radius: 50%; */
 }
 
-.App__HeaderTitle:visited .App__HeaderTitle:focus .App__HeaderTitle:active{
+.App__HeaderTitle:visited .App__HeaderTitle:focus .App__HeaderTitle:active {
   text-decoration: none;
+}
+@media only screen and (min-width: 1080px), (min-device-width: 1080px) {
+  .App__Header {
+    background-image: url("../../Images/background.jpg");
+    background-size: 100%;
+  }
+  .App__HeaderProfilePic {
+    height: 60%;
+  }
+  .App__HeaderTitle {
+    margin-top: 20px;
+    font-size: 60px;
+  }
+}
+
+@media only screen and (min-width: 1380px), (min-device-width: 1380px) {
+  .App__Header {
+    background-image: url("../../Images/background.jpg");
+    background-size: 100%;
+  }
+  .App__HeaderProfilePic {
+    height: 60%;
+  }
+  .App__HeaderTitle {
+    margin-top: 20px;
+    font-size: 60px;
+  }
 }
