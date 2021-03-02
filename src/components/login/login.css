@@ -1,0 +1,21 @@
+.login-container {
+  position: fixed;
+  z-index: 1;
+  background-color: rgb(161, 161, 132);
+}
+
+input[type="text"] {
+  border-radius: 4px;
+}
+
+input[type="password"] {
+  border-radius: 4px;
+}
+
+input[type="text"]:focus {
+  border: 3px solid #05410a;
+}
+
+input[type="password"]:focus {
+  border: 3px solid #05410a;
+}

@@ -13,7 +13,7 @@ class MapBlock extends Component {
     centre: {},
     campsiteList: [],
     isShown: { show: true, shownId: "" },
-    needsUpdating: false
+    needsUpdating: false,
   };
 
   componentDidMount() {
@@ -67,14 +67,24 @@ class MapBlock extends Component {
     const request = {
       location: map.center,
       query: "campsites",
-      radius: "500",
+      radius: 30000,
       fields: ["name", "geometry"],
+      strictbounds: true,
     };
     const service = new window.google.maps.places.PlacesService(map);
     service.textSearch(request, (results, status) => {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-        for (let i = 0; i < results.length; i++) {
-          campsiteList.push(results[i]);
+        for (let i = 0; i < 10; i++) {
+          if (
+            window.google.maps.geometry.spherical.computeDistanceBetween(
+              results[i].geometry.location,
+              map.center
+            ) < request.radius
+          ) {
+            if (!results[i].name.includes("Motorhome")) {
+              campsiteList.push(results[i]);
+            }
+          }
         }
         this.setState({ isLoading: false, campsiteList });
       }

@@ -7,19 +7,19 @@ import LoginPage from "./components/login/LoginPage";
 
 class App extends Component {
   // eslint-disable-next-line no-undef
-  state = { username: "", isUser: false, isOwner: false };
+  state = { username: "Caleb", ownerOrUser: "" };
 
   render() {
     return (
       <div>
-        <Header />
+        <Header setUser={this.setUser} username={this.state.username} />
         <LoginPage setUser={this.setUser} username={this.state.username} />
         <CampsitesPage />
       </div>
     );
   }
-  setUser = (username) => {
-    this.setState({ username });
+  setUser = (username, ownerOrUserString) => {
+    this.setState({ username, ownerOrUser: ownerOrUserString });
   };
 }
 

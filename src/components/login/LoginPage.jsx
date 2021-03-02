@@ -4,6 +4,7 @@ import SelectOwnerOrUser from "./SelectOwnerOrUser";
 import ShowLoginForm from "./showLoginForm";
 import LoginForm from "./LoginForm";
 import RegisterButton from "./RegisterButton";
+import "./login.css";
 
 class LoginPage extends Component {
   state = { isUser: true, registered: false, showLoginForm: false };
@@ -13,8 +14,9 @@ class LoginPage extends Component {
     if (username) return <WelcomePanel setUser={setUser} username={username} />;
     if (!username)
       return (
-        <div>
+        <div className="login-container">
           <ShowLoginForm showLogin={this.showLogin} />
+
           <SelectOwnerOrUser
             toggleForm={this.changeOwnerOrUser}
             isUser={isUser}
@@ -22,14 +24,16 @@ class LoginPage extends Component {
           />
           <LoginForm
             setUser={setUser}
-            isUser={true}
+            isUser={isUser}
             showLoginForm={showLoginForm}
+            registered={registered}
           />
           {showLoginForm ? (
             <RegisterButton
               isUser={isUser}
               toggleForm={this.changeOwnerOrUser}
               registered={registered}
+              setAsRegistered={this.setAsRegistered}
             />
           ) : null}
         </div>
@@ -44,6 +48,9 @@ class LoginPage extends Component {
     this.setState((currentState) => {
       return { showLoginForm: !currentState.showLoginForm };
     });
+  };
+  setAsRegistered = () => {
+    this.setState({ registered: true });
   };
 }
 

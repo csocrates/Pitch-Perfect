@@ -3,13 +3,24 @@ import RegisterForm from "./RegisterForm";
 class RegisterButton extends Component {
   state = { showRegisterForm: false };
   render() {
+    const { isUser, registered, setAsRegistered } = this.props;
     return (
       <>
-        <p>
-          Don't have an account yet?
-          <button onClick={this.displayForm}> Register</button>
-        </p>
-        <RegisterForm showForm={this.state.showRegisterForm} />
+        {!registered ? (
+          <>
+            <p>
+              Don't have an account yet?
+              <button onClick={this.displayForm}> Register</button>
+            </p>
+            <RegisterForm
+              showForm={this.state.showRegisterForm}
+              isUser={isUser}
+              setAsRegistered={setAsRegistered}
+            />
+          </>
+        ) : (
+          <p>Successfully registered!</p>
+        )}
       </>
     );
   }
