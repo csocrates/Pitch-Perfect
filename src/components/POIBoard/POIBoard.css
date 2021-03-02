@@ -49,6 +49,9 @@
 
 .nearestIcon {
   grid-area: pic;
+  width: 100px;
+  height: auto;
+  padding: 10px;
 }
 
 .name {
@@ -71,4 +74,48 @@
   grid-area: walking-time;
   margin: auto auto;
   font-size: 15px;
+}
+
+@media only screen and (min-width: 1080px), (min-device-width: 1080px) {
+  .name {
+    font-size: 26px;
+  }
+  .distance {
+    font-size: 20px;
+  }
+  .walking-time {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1380px), (min-device-width: 1380px) {
+  .poiBoard {
+    display: grid;
+    grid-template-rows: 18vh 18vh 18vh;
+  }
+  .nearestPubCard {
+    grid-row: 1;
+  }
+
+  .nearestSupermarketCard {
+    grid-row: 2;
+  }
+
+  .nearestCafeCard {
+    grid-row: 3;
+  }
+  .name {
+    font-size: 28px;
+  }
+  .distance {
+    font-size: 22px;
+  }
+  .walking-time {
+    font-size: 22px;
+  }
+  .nearestIcon {
+    width: 100px;
+    margin: 15px;
+    padding: 0;
+  }
 }
