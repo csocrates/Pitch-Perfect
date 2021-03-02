@@ -1,7 +1,7 @@
 .App__Header {
   padding: 10px;
   display: grid;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 20vh;

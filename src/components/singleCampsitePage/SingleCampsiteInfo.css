@@ -1,0 +1,17 @@
+@media only screen and (min-width: 1380px), (min-device-width: 1380px) {
+  .singleCampsitePage__singleCampsiteInfo {
+    display: grid;
+    grid-template-rows: 5vh 30vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .singleCampsiteInfo__singleCampsiteIntro {
+    grid-row: 1 / 4;
+    grid-column: 1 / 4;
+    border: solid 2px red;
+  }
+  .singleCampsiteInfo__POIBoard {
+    grid-row: 2 / 4;
+    grid-column: 3 / 5;
+    border: solid 2px green;
+  }
+}

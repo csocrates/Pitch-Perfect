@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import POIBoard from "../POIBoard/POIBoard";
 import SingleCampsiteIntro from "./SingleCampsiteIntro";
 import LinkToHomepage from ".././LinkToHomepage";
+import "./SingleCampsiteInfo.css";
 
 class SingleCampsiteInfo extends Component {
   state = {
