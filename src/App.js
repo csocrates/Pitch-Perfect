@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div>
         <Header setUser={this.setUser} username={this.state.username} />
-        <LoginPage setUser={this.setUser} username={this.state.username} />
+
         <CampsitesPage />
       </div>
     );

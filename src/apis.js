@@ -32,3 +32,9 @@ export const postUser = (newUser) => {
   console.log(newUser);
   return request.post("/users", newUser);
 };
+
+export const checkPasword = (userData) => {
+  return request.post("/login", userData).then((res) => {
+    console.log(res.data);
+  });
+};

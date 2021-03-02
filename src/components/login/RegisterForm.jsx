@@ -102,7 +102,6 @@ class RegisterForm extends Component {
       password,
       repeatPassword,
       firstNameError,
-      lastNameError,
       usernameError,
       passwordError,
       repeatPasswordError,
@@ -110,7 +109,7 @@ class RegisterForm extends Component {
       freeUsernameMsg,
     } = this.state;
     return showForm ? (
-      <form>
+      <form className="registration-form">
         <RegisterHeader isUser={isUser} />
         <label>
           First Name:
@@ -120,13 +119,12 @@ class RegisterForm extends Component {
             value={firstname}
             onChange={this.handleInput}
           />
-          {firstNameError ? (
-            <p>First name must be at least two characters</p>
-          ) : (
-            <p></p>
-          )}
         </label>
-        <br />
+        {firstNameError ? (
+          <p>First name must be at least two characters</p>
+        ) : (
+          <p></p>
+        )}
         <label>
           Last Name:
           <input
@@ -135,7 +133,6 @@ class RegisterForm extends Component {
             value={lastname}
             onChange={this.handleInput}
           />
-          {/* {lastNameError ? <p>Come on, we've been over this...</p> : <p></p>} */}
         </label>
         <br />
         <label>

@@ -8,7 +8,6 @@ const WelcomePanel = ({ username, setUser }) => {
         Welcome back
         <Link to={`/users/${username}`}> {username}</Link>
       </p>
-      ;
       <button
         onClick={() => {
           setUser("");

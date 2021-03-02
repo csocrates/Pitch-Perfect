@@ -1,9 +1,16 @@
 import React from "react";
+import loginIcon from "../../Images/login-icon.jpg";
 
 const showLoginForm = ({ showLogin }) => {
   return (
     <div>
-      <button onClick={showLogin}>Login</button>
+      <button onClick={showLogin}>
+        <img
+          style={{ width: "30px", height: "auto" }}
+          src={loginIcon}
+          alt="login"
+        />
+      </button>
     </div>
   );
 };

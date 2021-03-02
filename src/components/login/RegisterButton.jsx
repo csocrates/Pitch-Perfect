@@ -10,7 +10,10 @@ class RegisterButton extends Component {
           <>
             <p>
               Don't have an account yet?
-              <button onClick={this.displayForm}> Register</button>
+              <button className="register-button" onClick={this.displayForm}>
+                {" "}
+                Register
+              </button>
             </p>
             <RegisterForm
               showForm={this.state.showRegisterForm}

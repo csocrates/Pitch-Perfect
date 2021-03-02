@@ -7,8 +7,7 @@ class LoginForm extends Component {
   state = {
     username: "",
     password: "",
-    invalidUsername: false,
-    incorrectPassword: false,
+    errorMsg: "",
   };
 
   handleInput = ({ target: { id, value } }) => {
@@ -19,29 +18,24 @@ class LoginForm extends Component {
     e.preventDefault();
     const { isUser, setUser } = this.props;
     const { username, password } = this.state;
-    // api
-    //   .checkPasword(username, password, isUser)
-    //   .then(() => {
-    //     setUser(username, "user");
-    //   })
-    //   .catch((err) => {
-    //     this.setState({ incorrectPassword: true });
-    //   });
+    const userData = { username, password, isUser };
+    api
+      .checkPasword(userData)
+      .then(() => {
+        setUser(username, "user");
+      })
+      .catch((err) => {
+        console.dir(err);
+        // this.setState({ errorMsg: });
+      });
   };
 
   render() {
     const { isUser, showLoginForm } = this.props;
-    const {
-      username,
-      password,
-      invalidUsername,
-      incorrectPassword,
-    } = this.state;
-    console.log(invalidUsername);
+    const { username, password, errorMsg } = this.state;
     return showLoginForm ? (
       <form>
         <LoginHeader isUser={isUser} showLogin={showLoginForm} />
-        ;
         <input
           type="text"
           placeholder="Username"
@@ -49,11 +43,6 @@ class LoginForm extends Component {
           value={username}
           onChange={this.handleInput}
         />
-        {invalidUsername ? (
-          <p style={{ color: "red" }}>Username does not exist</p>
-        ) : (
-          <p></p>
-        )}
         <input
           type="password"
           placeholder="Password"
@@ -61,7 +50,7 @@ class LoginForm extends Component {
           value={password}
           onChange={this.handleInput}
         />
-        {incorrectPassword ? <p>Your password is incorrect</p> : <p></p>}
+        {errorMsg ? <p>{errorMsg}</p> : <p></p>}
         <button onClick={this.handleSubmit}>Log in</button>
       </form>
     ) : null;
