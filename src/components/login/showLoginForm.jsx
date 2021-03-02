@@ -1,5 +1,5 @@
 import React from "react";
-import loginIcon from "../../Images/login-icon.jpg";
+import loginIcon from "../../Images/icon-login.jpg";
 import "../header/Header.css";
 
 const showLoginForm = ({ showLogin }) => {
@@ -7,7 +7,7 @@ const showLoginForm = ({ showLogin }) => {
     <div>
       <button onClick={showLogin} className="header__login-button">
         <img
-          style={{ width: "30px", height: "auto" }}
+          className="header__login-button-image"
           src={loginIcon}
           alt="login"
         />

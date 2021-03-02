@@ -190,7 +190,9 @@ class RegisterForm extends Component {
           {repeatPasswordError ? <p>Passwords do not match</p> : <p></p>}
         </label>
         <br />
-        <button onClick={this.handleSubmit}>Create Profile</button>
+        <button className="createProfile-button" onClick={this.handleSubmit}>
+          Create Profile
+        </button>
       </form>
     ) : null;
   }

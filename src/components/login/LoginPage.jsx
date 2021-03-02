@@ -14,29 +14,30 @@ class LoginPage extends Component {
 
     if (!username)
       return (
-        <div className="login-container">
+        <section className="login-container">
           <ShowLoginForm showLogin={this.showLogin} />
-
-          <SelectOwnerOrUser
-            toggleForm={this.changeOwnerOrUser}
-            isUser={isUser}
-            showLogin={this.state.showLoginForm}
-          />
-          <LoginForm
-            setUser={setUser}
-            isUser={isUser}
-            showLoginForm={showLoginForm}
-            registered={registered}
-          />
-          {showLoginForm ? (
-            <RegisterButton
-              isUser={isUser}
+          <div className="login-form-container">
+            <SelectOwnerOrUser
               toggleForm={this.changeOwnerOrUser}
-              registered={registered}
-              setAsRegistered={this.setAsRegistered}
+              isUser={isUser}
+              showLogin={this.state.showLoginForm}
             />
-          ) : null}
-        </div>
+            <LoginForm
+              setUser={setUser}
+              isUser={isUser}
+              showLoginForm={showLoginForm}
+              registered={registered}
+            />
+            {showLoginForm ? (
+              <RegisterButton
+                isUser={isUser}
+                toggleForm={this.changeOwnerOrUser}
+                registered={registered}
+                setAsRegistered={this.setAsRegistered}
+              />
+            ) : null}
+          </div>
+        </section>
       );
   }
   changeOwnerOrUser = () => {

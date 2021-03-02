@@ -1,7 +1,12 @@
 .login-container {
   position: fixed;
+  right: 10px;
   z-index: 1;
-  background-color: rgb(161, 161, 132);
+  background-image: url("../../Images/tree-image.jpg");
+  background-size: 100%;
+  text-align: right;
+  border-radius: 6px;
+  height: auto;
 }
 
 .registration-form {
@@ -41,7 +46,25 @@ input[type="password"]:focus {
   outline: none;
 }
 
+.login-form-container {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
 .header__welcome {
   z-index: 1;
   color: white;
+}
+
+.createProfile-button {
+  margin-bottom: 10px;
+}
+
+.header__login-button-image {
+  width: 30px;
+  height: auto;
+  opacity: 0.5;
+}
+
+.header__login-button {
 }
