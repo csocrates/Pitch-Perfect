@@ -69,13 +69,13 @@
 
 @media only screen and (min-width: 1380px), (min-device-width: 1380px) {
   .SingleCampsiteIntro__photos__photo {
-    width: 32rem;
-    height: 22rem;
+    width: 55vh;
+    height: 45vh;
   }
   .SingleCampsiteIntro__photos {
     margin: auto auto;
-    width: 32rem;
-    height: 22rem;
+    width: 55vh;
+    height: 45vh;
     background-color: indigo;
   }
 }

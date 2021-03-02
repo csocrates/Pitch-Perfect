@@ -19,7 +19,6 @@ class CampsitesSearchANDResults extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log("navigate", position, this.state.isLoading);
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
