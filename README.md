@@ -162,7 +162,7 @@ const { REACT_APP_API_KEY } = process.env;
         }
     }
 
-    GET /:owner_username/campsites
+    GET /owners/:owner_username/campsites
     exampleResponse
     {
         owner_username,
@@ -174,4 +174,18 @@ const { REACT_APP_API_KEY } = process.env;
             votes,
         }]
     }
+```
+
+## login
+
+```
+    POST /login
+    examplePostBody
+    {
+        username,
+        password,
+        isUser
+    }
+    exampleResponse: status 200/404/400
+
 ```
