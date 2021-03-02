@@ -1,6 +1,6 @@
 .login-container {
   position: fixed;
-  z-index: 999;
+  z-index: 1;
   background-color: rgb(161, 161, 132);
 }
 
@@ -33,4 +33,15 @@ input[type="password"]:focus {
   border: none;
   background-color: transparent;
   outline: none;
+}
+
+.logout-button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.header__welcome {
+  z-index: 1;
+  color: white;
 }

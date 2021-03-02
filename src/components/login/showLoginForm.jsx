@@ -1,10 +1,11 @@
 import React from "react";
 import loginIcon from "../../Images/login-icon.jpg";
+import "../header/Header.css";
 
 const showLoginForm = ({ showLogin }) => {
   return (
     <div>
-      <button onClick={showLogin}>
+      <button onClick={showLogin} className="header__login-button">
         <img
           style={{ width: "30px", height: "auto" }}
           src={loginIcon}

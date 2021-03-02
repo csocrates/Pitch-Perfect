@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import POIBoard from "../POIBoard/POIBoard";
 import SingleCampsiteIntro from "./SingleCampsiteIntro";
 import LinkToHomepage from ".././LinkToHomepage";
+import "./SingleCampsiteInfo.css";
 
 class SingleCampsiteInfo extends Component {
   state = {
@@ -69,7 +70,9 @@ class SingleCampsiteInfo extends Component {
         <section className="singleCampsiteInfo__POIBoard">
           <POIBoard map={this.props.map} location={this.state.location} />
         </section>
-        <LinkToHomepage />
+        <section className="singleCampsiteInfo__LinkToHomepage">
+          <LinkToHomepage />
+        </section>
       </main>
     );
   }

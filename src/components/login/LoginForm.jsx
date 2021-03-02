@@ -20,13 +20,13 @@ class LoginForm extends Component {
     const { username, password } = this.state;
     const userData = { username, password, isUser };
     api
-      .checkPasword(userData)
+      .checkPassword(userData)
       .then(() => {
         setUser(username, "user");
       })
       .catch((err) => {
-        console.dir(err);
-        // this.setState({ errorMsg: });
+        const errorMsg = err.response.data.msg;
+        this.setState({ errorMsg });
       });
   };
 
@@ -50,7 +50,7 @@ class LoginForm extends Component {
           value={password}
           onChange={this.handleInput}
         />
-        {errorMsg ? <p>{errorMsg}</p> : <p></p>}
+        {errorMsg ? <p style={{ color: "red" }}>{errorMsg}</p> : <p></p>}
         <button onClick={this.handleSubmit}>Log in</button>
       </form>
     ) : null;

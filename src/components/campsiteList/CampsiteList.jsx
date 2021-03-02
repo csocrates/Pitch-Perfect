@@ -1,5 +1,6 @@
 import CampsiteCard from "./CampsiteCard";
 import "./campsiteCard.css";
+import "../../App.css";
 import relaxedGoose from "../../Images/relaxed-goose.png";
 
 const CampsiteList = ({ isListLoading, campsiteList, searchLocation }) => {
@@ -21,7 +22,7 @@ const CampsiteList = ({ isListLoading, campsiteList, searchLocation }) => {
 
   return (
     <>
-      <div>
+      <div className="campsiteList">
         {campsiteList.map((campsite) => {
           return <CampsiteCard key={campsite.reference} campsite={campsite} />;
         })}

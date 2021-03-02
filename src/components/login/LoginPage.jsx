@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import WelcomePanel from "./WelcomePanel";
 import SelectOwnerOrUser from "./SelectOwnerOrUser";
 import ShowLoginForm from "./showLoginForm";
 import LoginForm from "./LoginForm";
 import RegisterButton from "./RegisterButton";
 import "./login.css";
+import "../header/Header.css";
 
 class LoginPage extends Component {
   state = { isUser: true, registered: false, showLoginForm: false };
   render() {
     const { username, setUser } = this.props;
     const { isUser, registered, showLoginForm } = this.state;
-    if (username) return <WelcomePanel setUser={setUser} username={username} />;
+
     if (!username)
       return (
         <div className="login-container">

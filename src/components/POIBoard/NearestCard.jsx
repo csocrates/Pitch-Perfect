@@ -6,12 +6,7 @@ import "./POIBoard.css";
 const NearestCard = ({ type, name, distance, onFoot, icon }) => {
   return (
     <section className={`nearest${type}Card`}>
-      <img
-        className="nearestIcon"
-        src={icon}
-        alt={type}
-        style={{ width: "100px", height: "auto", padding: "10px" }}
-      />
+      <img className="nearestIcon" src={icon} alt={type} />
 
       <p className="name">{name}</p>
 

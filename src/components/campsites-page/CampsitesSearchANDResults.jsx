@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import MapBlock from "./MapBlock";
 import CampsiteList from "../campsiteList/CampsiteList";
 import "./CampsitesSearchANDResults.css";
+import "../../App.css";
 
 class CampsitesSearchANDResults extends Component {
   // eslint-disable-next-line no-undef
@@ -18,7 +19,6 @@ class CampsitesSearchANDResults extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log("navigate", position, this.state.isLoading);
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
@@ -106,7 +106,7 @@ class CampsitesSearchANDResults extends Component {
     const request = {
       location: map.center,
       query: "campsites",
-      radius: 20000,
+      radius: 30000,
       fields: ["name", "geometry"],
       strictbounds: true,
     };

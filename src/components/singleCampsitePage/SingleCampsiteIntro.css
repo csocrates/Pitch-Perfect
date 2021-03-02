@@ -1,5 +1,5 @@
-.SingleCampsiteIntro {
-}
+/* .SingleCampsiteIntro {
+} */
 
 .SingleCampsiteIntro__name {
   margin-top: 20px;
@@ -36,4 +36,46 @@
 .SingleCampsiteIntro__photos__photo {
   width: 20rem;
   height: 15rem;
+}
+
+@media only screen and (min-width: 768px), (min-device-width: 780px) {
+  .SingleCampsiteIntro__photos__photo {
+    width: 30rem;
+    height: 25rem;
+  }
+  .SingleCampsiteIntro__photos {
+    margin: auto auto;
+    width: 30rem;
+    height: 25rem;
+    background-color: indigo;
+  }
+  .SingleCampsiteIntro {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1080px), (min-device-width: 1080px) {
+  .SingleCampsiteIntro__photos__photo {
+    width: 40rem;
+    height: 32rem;
+  }
+  .SingleCampsiteIntro__photos {
+    margin: auto auto;
+    width: 40rem;
+    height: 32rem;
+    background-color: indigo;
+  }
+}
+
+@media only screen and (min-width: 1380px), (min-device-width: 1380px) {
+  .SingleCampsiteIntro__photos__photo {
+    width: 55vh;
+    height: 45vh;
+  }
+  .SingleCampsiteIntro__photos {
+    margin: auto auto;
+    width: 55vh;
+    height: 45vh;
+    background-color: indigo;
+  }
 }

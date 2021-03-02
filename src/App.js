@@ -3,17 +3,15 @@ import React, { Component } from "react";
 import Header from "./components/header/Header";
 import CampsitesPage from "./components/campsites-page/CampsitesPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LoginPage from "./components/login/LoginPage";
 
 class App extends Component {
   // eslint-disable-next-line no-undef
-  state = { username: "Caleb", ownerOrUser: "" };
+  state = { username: "", ownerOrUser: "" };
 
   render() {
     return (
-      <div>
+      <div className="Main">
         <Header setUser={this.setUser} username={this.state.username} />
-
         <CampsitesPage />
       </div>
     );
