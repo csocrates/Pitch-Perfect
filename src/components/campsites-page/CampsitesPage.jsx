@@ -7,7 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 class CampsitesPage extends Component {
   // eslint-disable-next-line no-undef
-  state = { map: "", isLoading: false };
+  state = { map: "", currentSearchLocation: "", isLoading: false };
   render() {
     if (this.state.isLoading) return <ClipLoader />;
 
@@ -20,15 +20,22 @@ class CampsitesPage extends Component {
             map={this.state.map}
           />
 
-          <SingleCampsitePage path="/campsite/*" map={this.state.map} />
+          <SingleCampsitePage
+            path="/campsite/*"
+            map={this.state.map}
+            changeMap={this.changeMap}
+          />
           <PageNotFound default />
         </Router>
       </div>
     );
   }
   // eslint-disable-next-line no-undef
-  changeMap = (newMap) => {
-    this.setState({ map: newMap, isLoading: false });
+  changeMap = (newMap, newSearchLocation) => {
+    this.setState({
+      map: newMap,
+      isLoading: false,
+    });
   };
 }
 

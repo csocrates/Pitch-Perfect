@@ -20,6 +20,38 @@
   overflow-y: scroll;
 }
 
+/* the view in singlepage */
+.campsitepage__CampsitesSearchANDResults--expand {
+  display: grid;
+  grid-template-rows: 1vh 5vh 32vh 38vh;
+  border-bottom: 2px solid black;
+}
+.campsitepage__CampsitesSearchANDResults--hide {
+  display: grid;
+  grid-template-rows: 1vh 5vh;
+}
+
+.CampsitesSearchANDResults__expandButton {
+  grid-row: 2;
+  height: 80%;
+  text-align: center;
+  padding: 0;
+}
+
+.CampsitesSearchANDResults__map--expand {
+  grid-row: 3;
+}
+.CampsitesSearchANDResults__map--hide {
+  display: none;
+}
+.CampsitesSearchANDResults__list--expand {
+  grid-row: 4;
+  overflow-y: scroll;
+}
+.CampsitesSearchANDResults__list--hide {
+  display: none;
+}
+
 @media only screen and (min-width: 768px), (min-device-width: 768px) {
   .CampsitesSearchANDResults__search {
     top: -15vh;
@@ -38,15 +70,51 @@
     grid-template-columns: 50% 50%;
     grid-template-rows: 70vh;
   }
+  .campsitepage__CampsitesSearchANDResults--expand {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 5vh 70vh;
+  }
+  .campsitepage__CampsitesSearchANDResults--hide {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 5vh;
+  }
+  .CampsitesSearchANDResults__expandButton {
+    height: 70%;
+    grid-row: 1;
+    grid-column: 1/3;
+    text-align: center;
+    padding: 0;
+  }
+
   .CampsitesSearchANDResults__map {
     grid-column: 1;
     grid-row: 1;
+  }
+
+  .CampsitesSearchANDResults__map--expand {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .CampsitesSearchANDResults__map--hide {
+    display: none;
   }
   .CampsitesSearchANDResults__list {
     margin-top: 10px;
     grid-column: 2;
     grid-row: 1;
     overflow-y: scroll;
+  }
+
+  .CampsitesSearchANDResults__list--expand {
+    margin-top: 10px;
+    grid-column: 2;
+    grid-row: 2;
+    overflow-y: scroll;
+  }
+  .CampsitesSearchANDResults__list--hide {
+    display: none;
   }
   .CampsitesSearchANDResults__search {
     /* grid-row: 1; */
