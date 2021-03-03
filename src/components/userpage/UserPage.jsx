@@ -60,7 +60,9 @@ class UserPage extends Component {
               );
             })
           ) : (
-            <p classame="userpage__middle">You haven't been camping yet...</p>
+            <p className="userpage__middle">
+              You haven't booked any camping with us yet...
+            </p>
           )}
           <p className="userpage__bottom"></p>
         </>

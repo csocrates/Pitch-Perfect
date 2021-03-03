@@ -21,7 +21,12 @@ class CampsitesPage extends Component {
             map={this.state.map}
           />
 
-          <SingleCampsitePage path="/campsite/*" map={this.state.map} />
+          <SingleCampsitePage
+            path="/campsite/*"
+            map={this.state.map}
+            changeMap={this.changeMap}
+          />
+
           <Userpage path="/users/:username" />
           <PageNotFound default />
         </Router>
