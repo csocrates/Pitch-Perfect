@@ -149,9 +149,7 @@ class RegisterForm extends Component {
           />
         </label>
         {usernameError ? (
-          <p className="form-error">
-            Username must be at least three characters
-          </p>
+          <p className="form-error">Invalid Username</p>
         ) : (
           <p></p>
         )}
@@ -209,6 +207,7 @@ class RegisterForm extends Component {
           this.setState({ freeUsernameError: true });
         })
         .catch((err) => {
+          console.dir(err);
           if (err.response.data === "No user was found") {
             this.setState({ freeUsernameError: false });
           } else {
