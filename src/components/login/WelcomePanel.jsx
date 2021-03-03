@@ -6,10 +6,11 @@ import "../header/Header.css";
 const WelcomePanel = ({ username, setUser }) => {
   return (
     <main className="header__welcome">
-      <p>
+      <p className="welcome-message">
         Welcome back
         <Link to={`/users/${username}`}> {username}</Link>
       </p>
+      <br />
       <button
         className="logout-button"
         onClick={() => {
