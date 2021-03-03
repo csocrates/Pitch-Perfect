@@ -29,7 +29,6 @@ export const getUser = (username) => {
 };
 
 export const postUser = (newUser) => {
-  console.log(newUser);
   return request.post("/users", newUser);
 };
 
@@ -38,3 +37,14 @@ export const checkPassword = (userData) => {
     console.log(res.data);
   });
 };
+
+const headers = {
+  'Content-Type': 'text/plain'
+};
+
+export const getReviewsById = (place_id) => {
+  return request.get(`/reviews/${place_id}`, {headers})
+    .then(({ data: { reviews } }) => {
+      return reviews;
+    });
+}
