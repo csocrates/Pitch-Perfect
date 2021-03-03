@@ -2,9 +2,10 @@ import CampsiteCard from "./CampsiteCard";
 import "./campsiteCard.css";
 import "../../App.css";
 import relaxedGoose from "../../Images/relaxed-goose.png";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const CampsiteList = ({ isListLoading, campsiteList, searchLocation }) => {
-  if (isListLoading) return "Loading...";
+  if (isListLoading) return <ClipLoader />;
   if (searchLocation && campsiteList.length === 0)
     return (
       <div>

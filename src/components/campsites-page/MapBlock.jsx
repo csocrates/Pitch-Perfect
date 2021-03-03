@@ -3,6 +3,8 @@ import GoogleMapReact from "google-map-react";
 import CurrentLocationMarker from "../markers/CurrentLocationMarker";
 import Marker from "../markers/Marker";
 import "./MapBlock.css";
+import ClipLoader from "react-spinners/ClipLoader";
+
 const { REACT_APP_API_KEY } = process.env;
 
 class MapBlock extends Component {
@@ -22,7 +24,7 @@ class MapBlock extends Component {
 
   render() {
     const { campsiteList } = this.props;
-    if (this.state.isLoading) return "Loading";
+    if (this.state.isLoading) return <ClipLoader />;
     return (
       <div className="mapblock">
         <GoogleMapReact
