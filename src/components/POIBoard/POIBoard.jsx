@@ -3,6 +3,7 @@ import NearestCard from "./NearestCard";
 import pubIcon from "../../Images/beer-icon.png";
 import supermarketIcon from "../../Images/supermarket-icon.webp";
 import cafeIcon from "../../Images/cafe-icon.webp";
+import ClipLoader from "react-spinners/ClipLoader";
 
 class POIBoard extends Component {
   state = {
@@ -41,7 +42,7 @@ class POIBoard extends Component {
       distanceInfo,
     } = this.state;
 
-    if (isLoading) return "Loading...";
+    if (isLoading) return <ClipLoader />;
     return (
       <div className="poiBoard">
         <NearestCard

@@ -1,0 +1,70 @@
+.login-container {
+  position: fixed;
+  right: 10px;
+  z-index: 1;
+  background-image: url("../../Images/tree-image.jpg");
+  background-size: 100%;
+  text-align: right;
+  border-radius: 6px;
+  height: auto;
+}
+
+.registration-form {
+  justify-content: space-between;
+}
+
+input[type="text"] {
+  border-radius: 4px;
+}
+
+input[type="password"] {
+  border-radius: 4px;
+}
+
+input[type="text"]:focus {
+  border: 3px solid #05410a;
+}
+
+input[type="password"]:focus {
+  border: 3px solid #05410a;
+}
+
+.register-button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.userOrOwnerButton {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.logout-button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.login-form-container {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.header__welcome {
+  z-index: 1;
+  color: white;
+}
+
+.createProfile-button {
+  margin-bottom: 10px;
+}
+
+.header__login-button-image {
+  width: 30px;
+  height: auto;
+  opacity: 0.5;
+}
+
+.header__login-button {
+}
