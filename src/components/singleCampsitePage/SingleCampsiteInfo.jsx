@@ -3,6 +3,9 @@ import POIBoard from "../POIBoard/POIBoard";
 import SingleCampsiteIntro from "./SingleCampsiteIntro";
 import LinkToHomepage from ".././LinkToHomepage";
 import "./SingleCampsiteInfo.css";
+import ClipLoader from "react-spinners/ClipLoader";
+import SingleCampsiteReviews from "./SingleCampsiteReviews";
+import * as api from "../../apis";
 
 class SingleCampsiteInfo extends Component {
   state = {
@@ -16,11 +19,11 @@ class SingleCampsiteInfo extends Component {
     location: {},
     name: "",
     googleAPIError: "",
+    reviewsLoaded: false,
   };
 
   componentDidMount() {
     const service = new window.google.maps.places.PlacesService(this.props.map);
-
     if (!this.props.map) {
       this.setState({ isLoading: false, googleAPIError: "No map was found" });
     } else {
@@ -53,17 +56,21 @@ class SingleCampsiteInfo extends Component {
 
       service.getDetails({ placeId: this.props.place_id }, (place, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-          this.setState({
-            isLoading: false,
-            formatted_address: place.formatted_address,
-            business_status: place.business_status,
-            formatted_phone_number: place.formatted_phone_number,
-            rating: place.rating,
-            photos: place.photos,
-            reviews: place.reviews,
-            location: place.geometry.location,
-            name: place.name,
-            googleAPIError: "",
+          api.getReviewsById(this.props.place_id).then((reviews) => {
+            this.setState(() => {
+              return {
+                isLoading: false,
+                formatted_address: place.formatted_address,
+                business_status: place.business_status,
+                formatted_phone_number: place.formatted_phone_number,
+                rating: place.rating,
+                photos: place.photos,
+                reviews: reviews,
+                location: place.geometry.location,
+                name: place.name,
+                googleAPIError: "",
+              };
+            });
           });
         } else {
           this.setState({ isLoading: false, googleAPIError: status });
@@ -73,7 +80,7 @@ class SingleCampsiteInfo extends Component {
   }
 
   render() {
-    if (this.state.isLoading) return "Loading";
+    if (this.state.isLoading) return <ClipLoader />;
     if (this.state.googleAPIError)
       return (
         <>
@@ -96,6 +103,31 @@ class SingleCampsiteInfo extends Component {
         </section>
         <section className="singleCampsiteInfo__POIBoard">
           <POIBoard map={this.props.map} location={this.state.location} />
+        </section>
+        <section className="singleCampsiteInfo__reviews">
+          {this.state.reviews.length === 0 ? (
+            <>
+              <p className="reviews__title">
+                No reviews yet. Register above to have your say.
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="reviews__title">
+                {`Reviews for ${this.state.name}`}
+              </p>
+              {this.state.reviews.map((review, index) => {
+                return (
+                  <SingleCampsiteReviews
+                    username={review.username}
+                    body={review.review}
+                    created_at={review.created_at}
+                    key={index}
+                  />
+                );
+              })}
+            </>
+          )}
         </section>
         <section className="singleCampsiteInfo__LinkToHomepage">
           <LinkToHomepage />

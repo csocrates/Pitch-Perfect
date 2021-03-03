@@ -6,6 +6,7 @@ import CampsiteList from "../campsiteList/CampsiteList";
 import Button from "react-bootstrap/Button";
 import "./CampsitesSearchANDResults.css";
 import "../../App.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 class CampsitesSearchANDResults extends Component {
   // eslint-disable-next-line no-undef
@@ -68,7 +69,7 @@ class CampsitesSearchANDResults extends Component {
       isListLoading,
       searchLocation,
     } = this.state;
-    if (this.state.isLoading) return "Loading...";
+    if (this.state.isLoading) return <ClipLoader />;
     return (
       <>
         <div

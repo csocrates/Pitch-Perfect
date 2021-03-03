@@ -1,0 +1,98 @@
+.login-container {
+  position: fixed;
+  right: 10px;
+  z-index: 1;
+  background-image: url("../../Images/sunny_forest.jpeg");
+  background-position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: right;
+  border-radius: 10px;
+  height: auto;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  border-radius: 4px;
+}
+
+input[type="password"] {
+  border-radius: 4px;
+}
+
+.login-input {
+  border: solid black 2px;
+  border-radius: 4px;
+}
+
+.reg-input {
+  border: none;
+  border-radius: 4px;
+}
+
+.form-error {
+  color: rgb(122, 1, 1);
+  font-size: 12px;
+}
+
+.register-button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  text-decoration: underline;
+  font-weight: 700;
+}
+.userOrOwnerButton {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  text-decoration: underline;
+}
+
+.logout-button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.login-form-container {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.header__welcome {
+  z-index: 1;
+  color: white;
+  text-align: right;
+  line-height: 100%;
+  font-size: 85%;
+}
+.welcome-message {
+  margin-bottom: 0.1em;
+  font-weight: 500;
+}
+
+.createProfile-button {
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.header__login-button-image {
+  width: 30px;
+  height: auto;
+  opacity: 0.5;
+}
+
+.header__login-button {
+}
+
+.firstname {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 5px;
+  padding-bottom: 1px;
+  font-size: 14px;
+}

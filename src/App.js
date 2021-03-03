@@ -6,16 +6,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   // eslint-disable-next-line no-undef
-  state = {};
+  state = { username: "", ownerOrUser: "" };
 
   render() {
     return (
       <div className="Main">
-        <Header />
+        <Header setUser={this.setUser} username={this.state.username} />
         <CampsitesPage />
       </div>
     );
   }
+  setUser = (username, ownerOrUserString) => {
+    this.setState({ username, ownerOrUser: ownerOrUserString });
+  };
 }
 
 export default App;

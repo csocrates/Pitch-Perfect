@@ -3,12 +3,13 @@ import { Router } from "@reach/router";
 import CampsitesSearchANDResults from "./CampsitesSearchANDResults";
 import SingleCampsitePage from "../singleCampsitePage/SingleCampsitePage";
 import PageNotFound from "./PageNotFound";
+import ClipLoader from "react-spinners/ClipLoader";
 
 class CampsitesPage extends Component {
   // eslint-disable-next-line no-undef
   state = { map: "", currentSearchLocation: "", isLoading: false };
   render() {
-    if (this.state.isLoading) return "Loading";
+    if (this.state.isLoading) return <ClipLoader />;
 
     return (
       <div className="App__campsitespage">

@@ -38,6 +38,29 @@
   height: 15rem;
 }
 
+.reviews__title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 5px;
+  font-size: 30px;
+}
+
+.review__body {
+  margin-bottom: 0;
+  padding: 0 5px;
+  background: ivory;
+  border-top: 2px solid lightgreen;
+  font-size: 22px;
+}
+
+.review__author {
+  padding: 0 5px;
+  background: ivory;
+  border-bottom: 2px solid lightgreen;
+  font-style: italic;
+  font-size: 12px;
+}
+
 @media only screen and (min-width: 768px), (min-device-width: 780px) {
   .SingleCampsiteIntro__photos__photo {
     width: 30rem;
