@@ -29,17 +29,21 @@ class SingleCampsiteInfo extends Component {
     } else {
       service.getDetails({ placeId: this.props.place_id }, (place, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-          this.setState({
-            isLoading: false,
-            formatted_address: place.formatted_address,
-            business_status: place.business_status,
-            formatted_phone_number: place.formatted_phone_number,
-            rating: place.rating,
-            photos: place.photos,
-            reviews: place.reviews,
-            location: place.geometry.location,
-            name: place.name,
-            googleAPIError: "",
+          api.getReviewsById(this.props.place_id).then((apiReviews) => {
+            this.setState(() => {
+              return {
+                isLoading: false,
+                formatted_address: place.formatted_address,
+                business_status: place.business_status,
+                formatted_phone_number: place.formatted_phone_number,
+                rating: place.rating,
+                photos: place.photos,
+                reviews: [...place.reviews, ...apiReviews],
+                location: place.geometry.location,
+                name: place.name,
+                googleAPIError: "",
+              };
+            });
           });
         } else {
           this.setState({ isLoading: false, googleAPIError: status });
@@ -56,7 +60,7 @@ class SingleCampsiteInfo extends Component {
 
       service.getDetails({ placeId: this.props.place_id }, (place, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-          api.getReviewsById(this.props.place_id).then((reviews) => {
+          api.getReviewsById(this.props.place_id).then((apiReviews) => {
             this.setState(() => {
               return {
                 isLoading: false,
@@ -65,7 +69,7 @@ class SingleCampsiteInfo extends Component {
                 formatted_phone_number: place.formatted_phone_number,
                 rating: place.rating,
                 photos: place.photos,
-                reviews: reviews,
+                reviews: [...place.reviews, ...apiReviews],
                 location: place.geometry.location,
                 name: place.name,
                 googleAPIError: "",
@@ -79,7 +83,7 @@ class SingleCampsiteInfo extends Component {
     }
   }
 
-  render() {
+  render () {
     if (this.state.isLoading) return <ClipLoader />;
     if (this.state.googleAPIError)
       return (
@@ -119,9 +123,9 @@ class SingleCampsiteInfo extends Component {
               {this.state.reviews.map((review, index) => {
                 return (
                   <SingleCampsiteReviews
-                    username={review.username}
-                    body={review.review}
-                    created_at={review.created_at}
+                    username={review.author_name || review.username}
+                    body={review.text || review.review}
+                    created_at={review.time || review.created_at}
                     key={index}
                   />
                 );
