@@ -42,6 +42,7 @@ class LoginForm extends Component {
           id="username"
           value={username}
           onChange={this.handleInput}
+          className="login-input"
         />
         <br />
         <br />
@@ -51,6 +52,7 @@ class LoginForm extends Component {
           id="password"
           value={password}
           onChange={this.handleInput}
+          className="login-input"
         />
         {errorMsg ? <p style={{ color: "red" }}>{errorMsg}</p> : <p></p>}
         <button onClick={this.handleSubmit}>Log in</button>

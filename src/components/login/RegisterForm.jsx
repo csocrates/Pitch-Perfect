@@ -15,8 +15,7 @@ class RegisterForm extends Component {
     usernameError: false,
     passwordError: false,
     repeatPasswordError: false,
-    freeUsername: true,
-    freeUsernameMsg: false,
+    freeUsernameError: false,
   };
 
   handleInput = ({ target: { id, value } }) => {
@@ -31,9 +30,8 @@ class RegisterForm extends Component {
       repeatPassword,
       username,
       usernameError,
-      freeUsername,
     } = this.state;
-    if (firstname.length < 3) {
+    if (firstname.length < 2) {
       this.setState({ firstNameError: true });
       return false;
     } else {
@@ -51,11 +49,8 @@ class RegisterForm extends Component {
     } else {
       this.setState({ usernameError: false });
     }
-    if (!freeUsername) {
-      return false;
-    } else {
-      this.setState({ freeUsername: true });
-    }
+    this.checkUsername();
+
     if (password.length < 6) {
       this.setState({ passwordError: true });
       return false;
@@ -77,6 +72,7 @@ class RegisterForm extends Component {
     const { firstname, lastname, username, password } = this.state;
     const newUser = { username, firstname, lastname, password };
     const isValid = this.validate();
+
     if (isValid && isUser) {
       api
         .postUser(newUser)
@@ -102,92 +98,104 @@ class RegisterForm extends Component {
       password,
       repeatPassword,
       firstNameError,
+      lastNameError,
       usernameError,
+      freeUsernameError,
       passwordError,
       repeatPasswordError,
-      freeUsername,
-      freeUsernameMsg,
     } = this.state;
     return showForm ? (
       <form className="registration-form">
         <RegisterHeader isUser={isUser} />
-        <label>
+        <label className="firstname">
           First Name:
           <input
             type="text"
             id="firstname"
             value={firstname}
             onChange={this.handleInput}
+            className="reg-input"
           />
+          {firstNameError ? (
+            <p className="form-error">
+              First name must be at least two characters
+            </p>
+          ) : (
+            <p></p>
+          )}
         </label>
-        {firstNameError ? (
-          <p>First name must be at least two characters</p>
-        ) : (
-          <p></p>
-        )}
-        <label>
+        <br />
+        <label className="firstname">
           Last Name:
           <input
             type="text"
             id="lastname"
             value={lastname}
             onChange={this.handleInput}
+            className="reg-input"
           />
+          {lastNameError ? (
+            <p className="form-error">
+              Last name must be at least two characters
+            </p>
+          ) : (
+            <p></p>
+          )}
         </label>
         <br />
-        <label>
-          New username:
+        <label className="firstname">
+          New Username:
           <input
             type="text"
             id="username"
             value={username}
             onChange={this.handleInput}
-            onBlur={this.checkUsername}
+            className="reg-input"
           />
           {usernameError ? (
-            <p style={{ color: "red" }}>
-              Username must be at least three characters
-            </p>
+            <p className="form-error">Invalid Username</p>
           ) : (
             <p></p>
           )}
-          {!freeUsername ? (
-            <p style={{ color: "red" }}>Username already exists</p>
+          {freeUsernameError ? (
+            <p className="form-error">Username already exists</p>
           ) : (
             <p></p>
-          )}
-          {freeUsernameMsg ? (
-            <p style={{ color: "green" }}>Username available</p>
-          ) : (
-            ""
           )}
         </label>
         <br />
-        <label>
-          Choose password:
+        <label className="firstname">
+          Choose Password:
           <input
             type="password"
             id="password"
             value={password}
             onChange={this.handleInput}
+            className="reg-input"
           />
           {passwordError ? (
-            <p>Your password must be at least six characters</p>
+            <p className="form-error">
+              Your password must be at least six characters
+            </p>
           ) : (
             <p></p>
           )}
         </label>
         <br />
-        <label>
-          Repeat password:
+        <label className="firstname">
+          Repeat Password:
           <input
             type="password"
             id="repeatPassword"
             value={repeatPassword}
             onChange={this.handleInput}
-            onBlur={this.validate}
+            className="reg-input"
           />
-          {repeatPasswordError ? <p>Passwords do not match</p> : <p></p>}
+          {repeatPasswordError ? (
+            <p className="form-error">Passwords do not match</p>
+          ) : (
+            <p></p>
+          )}
         </label>
         <br />
         <button className="createProfile-button" onClick={this.handleSubmit}>
@@ -196,18 +204,24 @@ class RegisterForm extends Component {
       </form>
     ) : null;
   }
+
   checkUsername = () => {
+    console.log("STATE", this.state);
     const { isUser } = this.props;
     const { username } = this.state;
     if (isUser) {
       api
         .getUser(username)
-        .then(() => {
-          this.setState({ freeUsername: false });
+        .then((res) => {
+          console.log("checkUser", res);
+          this.setState({ freeUsernameError: true });
         })
         .catch((err) => {
-          if (err.response.data === "No user was found") {
-            this.setState({ freeUsername: true, freeUsernameMsg: true });
+          console.dir(err);
+          if (err.response.data.msg === "No user was found") {
+            this.setState({ freeUsernameError: false });
+          } else {
+            this.setState({ freeUsernameError: true });
           }
         });
     }
