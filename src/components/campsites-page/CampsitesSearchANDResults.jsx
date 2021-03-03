@@ -3,6 +3,7 @@ import * as apis from "../../apis";
 import SearchBar from "./SearchBar";
 import MapBlock from "./MapBlock";
 import CampsiteList from "../campsiteList/CampsiteList";
+import Button from "react-bootstrap/Button";
 import "./CampsitesSearchANDResults.css";
 import "../../App.css";
 
@@ -15,17 +16,33 @@ class CampsitesSearchANDResults extends Component {
     campsiteList: [],
     isListLoading: true,
     placeholder: "Enter place or postcode",
+    isExpand: false,
   };
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
+    if (this.props.map) {
+      this.setState(
+        {
+          geoLocation: {
+            lat: this.props.map.center.lat(),
+            lng: this.props.map.center.lng(),
+          },
+          isLoading: false,
+        },
+        () => {
+          this.fetchCampsitesByLocation(this.props.map);
+        }
+      );
+    } else {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
 
-      this.setState({ geoLocation: { lat, lng }, isLoading: false }, () => {
-        if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
+        this.setState({ geoLocation: { lat, lng }, isLoading: false }, () => {
+          if (this.props.map) this.fetchCampsitesByLocation(this.props.map);
+        });
       });
-    });
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -53,28 +70,67 @@ class CampsitesSearchANDResults extends Component {
     } = this.state;
     if (this.state.isLoading) return "Loading...";
     return (
-      <div className="campsitepage__CampsitesSearchANDResults">
-        <section className="CampsitesSearchANDResults__search">
-          <SearchBar
-            changeLocation={this.changeLocation}
-            placeholder={placeholder}
-          />
-        </section>
-        <section className="CampsitesSearchANDResults__map">
-          <MapBlock
-            geoLocation={geoLocation}
-            changeMap={this.props.changeMap}
-            campsiteList={campsiteList}
-          />
-        </section>
-        <section className="CampsitesSearchANDResults__list">
-          <CampsiteList
-            isListLoading={isListLoading}
-            campsiteList={campsiteList}
-            searchLocation={searchLocation}
-          />
-        </section>
-      </div>
+      <>
+        <div
+          className={
+            this.props.path === "/"
+              ? "campsitepage__CampsitesSearchANDResults"
+              : this.state.isExpand
+              ? "campsitepage__CampsitesSearchANDResults--expand"
+              : "campsitepage__CampsitesSearchANDResults--hide"
+          }
+        >
+          <section className="CampsitesSearchANDResults__search">
+            <SearchBar
+              changeLocation={this.changeLocation}
+              placeholder={placeholder}
+            />
+          </section>
+          {this.props.path === "/" ? null : (
+            <Button
+              variant="secondary"
+              className="CampsitesSearchANDResults__expandButton"
+              onClick={() => {
+                this.setState((currentState) => {
+                  return { isExpand: !currentState.isExpand };
+                });
+              }}
+            >
+              {this.state.isExpand ? "▲" : "search list ▼"}
+            </Button>
+          )}
+          <section
+            className={
+              this.props.path === "/"
+                ? "CampsitesSearchANDResults__map"
+                : this.state.isExpand
+                ? "CampsitesSearchANDResults__map--expand"
+                : "CampsitesSearchANDResults__map--hide"
+            }
+          >
+            <MapBlock
+              geoLocation={geoLocation}
+              changeMap={this.props.changeMap}
+              campsiteList={campsiteList}
+            />
+          </section>
+          <section
+            className={
+              this.props.path === "/"
+                ? "CampsitesSearchANDResults__list"
+                : this.state.isExpand
+                ? "CampsitesSearchANDResults__list--expand"
+                : "CampsitesSearchANDResults__list--hide"
+            }
+          >
+            <CampsiteList
+              isListLoading={isListLoading}
+              campsiteList={campsiteList}
+              searchLocation={searchLocation}
+            />
+          </section>
+        </div>
+      </>
     );
   }
 

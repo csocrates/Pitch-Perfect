@@ -45,6 +45,33 @@ class SingleCampsiteInfo extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.place_id !== this.props.place_id) {
+      const service = new window.google.maps.places.PlacesService(
+        this.props.map
+      );
+
+      service.getDetails({ placeId: this.props.place_id }, (place, status) => {
+        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+          this.setState({
+            isLoading: false,
+            formatted_address: place.formatted_address,
+            business_status: place.business_status,
+            formatted_phone_number: place.formatted_phone_number,
+            rating: place.rating,
+            photos: place.photos,
+            reviews: place.reviews,
+            location: place.geometry.location,
+            name: place.name,
+            googleAPIError: "",
+          });
+        } else {
+          this.setState({ isLoading: false, googleAPIError: status });
+        }
+      });
+    }
+  }
+
   render() {
     if (this.state.isLoading) return "Loading";
     if (this.state.googleAPIError)
