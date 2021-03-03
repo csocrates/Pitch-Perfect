@@ -3,6 +3,7 @@ import POIBoard from "../POIBoard/POIBoard";
 import SingleCampsiteIntro from "./SingleCampsiteIntro";
 import LinkToHomepage from ".././LinkToHomepage";
 import "./SingleCampsiteInfo.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 class SingleCampsiteInfo extends Component {
   state = {
@@ -46,7 +47,7 @@ class SingleCampsiteInfo extends Component {
   }
 
   render() {
-    if (this.state.isLoading) return "Loading";
+    if (this.state.isLoading) return <ClipLoader />;
     if (this.state.googleAPIError)
       return (
         <>
