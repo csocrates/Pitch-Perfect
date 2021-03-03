@@ -8,7 +8,7 @@ import Userpage from "../userpage/UserPage";
 
 class CampsitesPage extends Component {
   // eslint-disable-next-line no-undef
-  state = { map: "", isLoading: false };
+  state = { map: "", currentSearchLocation: "", isLoading: false };
   render() {
     if (this.state.isLoading) return <ClipLoader />;
 
@@ -29,8 +29,11 @@ class CampsitesPage extends Component {
     );
   }
   // eslint-disable-next-line no-undef
-  changeMap = (newMap) => {
-    this.setState({ map: newMap, isLoading: false });
+  changeMap = (newMap, newSearchLocation) => {
+    this.setState({
+      map: newMap,
+      isLoading: false,
+    });
   };
 }
 

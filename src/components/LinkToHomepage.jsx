@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import "./LinkToHomepage.css";
 
 const LinkToHomepage = () => {
