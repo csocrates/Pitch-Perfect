@@ -30,7 +30,6 @@ class RegisterForm extends Component {
       repeatPassword,
       username,
       usernameError,
-      freeUsername,
     } = this.state;
     if (firstname.length < 2) {
       this.setState({ firstNameError: true });
@@ -51,6 +50,7 @@ class RegisterForm extends Component {
       this.setState({ usernameError: false });
     }
     this.checkUsername();
+
     if (password.length < 6) {
       this.setState({ passwordError: true });
       return false;
@@ -114,16 +114,17 @@ class RegisterForm extends Component {
             id="firstname"
             value={firstname}
             onChange={this.handleInput}
+            className="reg-input"
           />
-        {firstNameError ? (
-          <p className="form-error">
-            First name must be at least two characters
-          </p>
-        ) : (
-          <p></p>
-        )}
+          {firstNameError ? (
+            <p className="form-error">
+              First name must be at least two characters
+            </p>
+          ) : (
+            <p></p>
+          )}
         </label>
-        <br/>
+        <br />
         <label className="firstname">
           Last Name:
           <input
@@ -131,43 +132,46 @@ class RegisterForm extends Component {
             id="lastname"
             value={lastname}
             onChange={this.handleInput}
+            className="reg-input"
           />
-        {lastNameError ? (
-          <p className="form-error">
-            Last name must be at least two characters
-          </p>
-        ) : (
-          <p></p>
-        )}
+          {lastNameError ? (
+            <p className="form-error">
+              Last name must be at least two characters
+            </p>
+          ) : (
+            <p></p>
+          )}
         </label>
-        <br/>
+        <br />
         <label className="firstname">
-          New username:
+          New Username:
           <input
             type="text"
             id="username"
             value={username}
             onChange={this.handleInput}
+            className="reg-input"
           />
-        {usernameError ? (
-          <p className="form-error">Invalid Username</p>
-        ) : (
-          <p></p>
-        )}
-        {freeUsernameError ? (
-          <p className="form-error">Username already exists</p>
-        ) : (
-          <p></p>
-        )}
+          {usernameError ? (
+            <p className="form-error">Invalid Username</p>
+          ) : (
+            <p></p>
+          )}
+          {freeUsernameError ? (
+            <p className="form-error">Username already exists</p>
+          ) : (
+            <p></p>
+          )}
         </label>
-        <br/>
+        <br />
         <label className="firstname">
-          Choose password:
+          Choose Password:
           <input
             type="password"
             id="password"
             value={password}
             onChange={this.handleInput}
+            className="reg-input"
           />
           {passwordError ? (
             <p className="form-error">
@@ -177,14 +181,15 @@ class RegisterForm extends Component {
             <p></p>
           )}
         </label>
-        <br/>
+        <br />
         <label className="firstname">
-          Repeat password:
+          Repeat Password:
           <input
             type="password"
             id="repeatPassword"
             value={repeatPassword}
             onChange={this.handleInput}
+            className="reg-input"
           />
           {repeatPasswordError ? (
             <p className="form-error">Passwords do not match</p>
@@ -201,6 +206,7 @@ class RegisterForm extends Component {
   }
 
   checkUsername = () => {
+    console.log("STATE", this.state);
     const { isUser } = this.props;
     const { username } = this.state;
     if (isUser) {
@@ -212,10 +218,10 @@ class RegisterForm extends Component {
         })
         .catch((err) => {
           console.dir(err);
-          if (err.response.data === "No user was found") {
+          if (err.response.data.msg === "No user was found") {
             this.setState({ freeUsernameError: false });
           } else {
-            this.setState({ usernameError: true });
+            this.setState({ freeUsernameError: true });
           }
         });
     }

@@ -8,22 +8,26 @@
   background-repeat: no-repeat;
   text-align: right;
   border-radius: 10px;
-  border: black 5px solid;
   height: auto;
   font-weight: bold;
 }
 
-.registration-form {
-}
-
 input[type="text"] {
   border-radius: 4px;
-  border: none;
 }
 
 input[type="password"] {
   border-radius: 4px;
+}
+
+.login-input {
+  border: solid black 2px;
+  border-radius: 4px;
+}
+
+.reg-input {
   border: none;
+  border-radius: 4px;
 }
 
 .form-error {
@@ -36,6 +40,7 @@ input[type="password"] {
   background-color: transparent;
   outline: none;
   text-decoration: underline;
+  font-weight: 700;
 }
 .userOrOwnerButton {
   border: none;
@@ -48,6 +53,9 @@ input[type="password"] {
   border: none;
   background-color: transparent;
   outline: none;
+  color: white;
+  text-decoration: underline;
+  font-weight: 700;
 }
 
 .login-form-container {
@@ -58,6 +66,13 @@ input[type="password"] {
 .header__welcome {
   z-index: 1;
   color: white;
+  text-align: right;
+  line-height: 100%;
+  font-size: 85%;
+}
+.welcome-message {
+  margin-bottom: 0.1em;
+  font-weight: 500;
 }
 
 .createProfile-button {
@@ -79,4 +94,5 @@ input[type="password"] {
   border-radius: 5px;
   padding: 5px;
   padding-bottom: 1px;
+  font-size: 14px;
 }
