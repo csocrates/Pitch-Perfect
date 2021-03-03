@@ -2,11 +2,15 @@
   position: fixed;
   right: 10px;
   z-index: 1;
-  background-image: url("../../Images/tree-image.jpg");
-  background-size: 100%;
+  background-image: url("../../Images/sunny_forest.jpeg");
+  background-position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: right;
-  border-radius: 6px;
+  border-radius: 10px;
+  border: black 5px solid;
   height: auto;
+  font-weight: bold;
 }
 
 .registration-form {
@@ -15,10 +19,12 @@
 
 input[type="text"] {
   border-radius: 4px;
+  border: none;
 }
 
 input[type="password"] {
   border-radius: 4px;
+  border: none;
 }
 
 input[type="text"]:focus {
@@ -67,4 +73,10 @@ input[type="password"]:focus {
 }
 
 .header__login-button {
+}
+
+.firstname {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 5px;
 }

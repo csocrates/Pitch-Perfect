@@ -111,7 +111,7 @@ class RegisterForm extends Component {
     return showForm ? (
       <form className="registration-form">
         <RegisterHeader isUser={isUser} />
-        <label>
+        <label className="firstname">
           First Name:
           <input
             type="text"
@@ -125,7 +125,7 @@ class RegisterForm extends Component {
         ) : (
           <p></p>
         )}
-        <label>
+        <label className="firstname">
           Last Name:
           <input
             type="text"
@@ -135,7 +135,7 @@ class RegisterForm extends Component {
           />
         </label>
         <br />
-        <label>
+        <label className="firstname">
           New username:
           <input
             type="text"
@@ -163,7 +163,7 @@ class RegisterForm extends Component {
           )}
         </label>
         <br />
-        <label>
+        <label className="firstname">
           Choose password:
           <input
             type="password"
@@ -178,7 +178,7 @@ class RegisterForm extends Component {
           )}
         </label>
         <br />
-        <label>
+        <label className="firstname">
           Repeat password:
           <input
             type="password"
