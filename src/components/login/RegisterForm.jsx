@@ -15,8 +15,7 @@ class RegisterForm extends Component {
     usernameError: false,
     passwordError: false,
     repeatPasswordError: false,
-    freeUsername: true,
-    freeUsernameMsg: false,
+    freeUsernameError: false,
   };
 
   handleInput = ({ target: { id, value } }) => {
@@ -33,7 +32,7 @@ class RegisterForm extends Component {
       usernameError,
       freeUsername,
     } = this.state;
-    if (firstname.length < 3) {
+    if (firstname.length < 2) {
       this.setState({ firstNameError: true });
       return false;
     } else {
@@ -51,11 +50,7 @@ class RegisterForm extends Component {
     } else {
       this.setState({ usernameError: false });
     }
-    if (!freeUsername) {
-      return false;
-    } else {
-      this.setState({ freeUsername: true });
-    }
+    this.checkUsername();
     if (password.length < 6) {
       this.setState({ passwordError: true });
       return false;
@@ -77,6 +72,7 @@ class RegisterForm extends Component {
     const { firstname, lastname, username, password } = this.state;
     const newUser = { username, firstname, lastname, password };
     const isValid = this.validate();
+
     if (isValid && isUser) {
       api
         .postUser(newUser)
@@ -102,11 +98,11 @@ class RegisterForm extends Component {
       password,
       repeatPassword,
       firstNameError,
+      lastNameError,
       usernameError,
+      freeUsernameError,
       passwordError,
       repeatPasswordError,
-      freeUsername,
-      freeUsernameMsg,
     } = this.state;
     return showForm ? (
       <form className="registration-form">
@@ -121,7 +117,9 @@ class RegisterForm extends Component {
           />
         </label>
         {firstNameError ? (
-          <p>First name must be at least two characters</p>
+          <p className="form-error">
+            First name must be at least two characters
+          </p>
         ) : (
           <p></p>
         )}
@@ -134,7 +132,13 @@ class RegisterForm extends Component {
             onChange={this.handleInput}
           />
         </label>
-        <br />
+        {lastNameError ? (
+          <p className="form-error">
+            Last name must be at least two characters
+          </p>
+        ) : (
+          <p></p>
+        )}
         <label>
           New username:
           <input
@@ -142,27 +146,20 @@ class RegisterForm extends Component {
             id="username"
             value={username}
             onChange={this.handleInput}
-            onBlur={this.checkUsername}
           />
-          {usernameError ? (
-            <p style={{ color: "red" }}>
-              Username must be at least three characters
-            </p>
-          ) : (
-            <p></p>
-          )}
-          {!freeUsername ? (
-            <p style={{ color: "red" }}>Username already exists</p>
-          ) : (
-            <p></p>
-          )}
-          {freeUsernameMsg ? (
-            <p style={{ color: "green" }}>Username available</p>
-          ) : (
-            ""
-          )}
         </label>
-        <br />
+        {usernameError ? (
+          <p className="form-error">
+            Username must be at least three characters
+          </p>
+        ) : (
+          <p></p>
+        )}
+        {freeUsernameError ? (
+          <p className="form-error">Username already exists</p>
+        ) : (
+          <p></p>
+        )}
         <label>
           Choose password:
           <input
@@ -172,7 +169,9 @@ class RegisterForm extends Component {
             onChange={this.handleInput}
           />
           {passwordError ? (
-            <p>Your password must be at least six characters</p>
+            <p className="form-error">
+              Your password must be at least six characters
+            </p>
           ) : (
             <p></p>
           )}
@@ -185,9 +184,12 @@ class RegisterForm extends Component {
             id="repeatPassword"
             value={repeatPassword}
             onChange={this.handleInput}
-            onBlur={this.validate}
           />
-          {repeatPasswordError ? <p>Passwords do not match</p> : <p></p>}
+          {repeatPasswordError ? (
+            <p className="form-error">Passwords do not match</p>
+          ) : (
+            <p></p>
+          )}
         </label>
         <br />
         <button className="createProfile-button" onClick={this.handleSubmit}>
@@ -202,12 +204,15 @@ class RegisterForm extends Component {
     if (isUser) {
       api
         .getUser(username)
-        .then(() => {
-          this.setState({ freeUsername: false });
+        .then((res) => {
+          console.log("checkUser", res);
+          this.setState({ freeUsernameError: true });
         })
         .catch((err) => {
           if (err.response.data === "No user was found") {
-            this.setState({ freeUsername: true, freeUsernameMsg: true });
+            this.setState({ freeUsernameError: false });
+          } else {
+            this.setState({ freeUsernameError: true });
           }
         });
     }

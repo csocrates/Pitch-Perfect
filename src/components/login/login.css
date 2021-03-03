@@ -2,16 +2,15 @@
   position: fixed;
   right: 10px;
   z-index: 1;
-  background-image: url("../../Images/tree-image.jpg");
-  background-size: 100%;
+  background-color: rgb(177, 189, 184);
   text-align: right;
   border-radius: 6px;
   height: auto;
 }
 
-.registration-form {
+/* .registration-form {
   justify-content: space-between;
-}
+} */
 
 input[type="text"] {
   border-radius: 4px;
@@ -21,23 +20,22 @@ input[type="password"] {
   border-radius: 4px;
 }
 
-input[type="text"]:focus {
-  border: 3px solid #05410a;
-}
-
-input[type="password"]:focus {
-  border: 3px solid #05410a;
+.form-error {
+  color: rgb(122, 1, 1);
+  font-size: 8px;
 }
 
 .register-button {
   border: none;
   background-color: transparent;
   outline: none;
+  text-decoration: underline;
 }
 .userOrOwnerButton {
   border: none;
   background-color: transparent;
   outline: none;
+  text-decoration: underline;
 }
 
 .logout-button {
