@@ -2,27 +2,33 @@
   position: fixed;
   right: 10px;
   z-index: 1;
-  background-color: rgb(177, 189, 184);
+  background-image: url("../../Images/sunny_forest.jpeg");
+  background-position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: right;
-  border-radius: 6px;
+  border-radius: 10px;
+  border: black 5px solid;
   height: auto;
+  font-weight: bold;
 }
 
-/* .registration-form {
-  justify-content: space-between;
-} */
+.registration-form {
+}
 
 input[type="text"] {
   border-radius: 4px;
+  border: none;
 }
 
 input[type="password"] {
   border-radius: 4px;
+  border: none;
 }
 
 .form-error {
   color: rgb(122, 1, 1);
-  font-size: 8px;
+  font-size: 12px;
 }
 
 .register-button {
@@ -56,6 +62,7 @@ input[type="password"] {
 
 .createProfile-button {
   margin-bottom: 10px;
+  background-color: white;
 }
 
 .header__login-button-image {
@@ -65,4 +72,11 @@ input[type="password"] {
 }
 
 .header__login-button {
+}
+
+.firstname {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 5px;
+  padding-bottom: 1px;
 }

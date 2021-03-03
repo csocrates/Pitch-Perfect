@@ -107,7 +107,7 @@ class RegisterForm extends Component {
     return showForm ? (
       <form className="registration-form">
         <RegisterHeader isUser={isUser} />
-        <label>
+        <label className="firstname">
           First Name:
           <input
             type="text"
@@ -115,7 +115,6 @@ class RegisterForm extends Component {
             value={firstname}
             onChange={this.handleInput}
           />
-        </label>
         {firstNameError ? (
           <p className="form-error">
             First name must be at least two characters
@@ -123,7 +122,9 @@ class RegisterForm extends Component {
         ) : (
           <p></p>
         )}
-        <label>
+        </label>
+        <br/>
+        <label className="firstname">
           Last Name:
           <input
             type="text"
@@ -131,7 +132,6 @@ class RegisterForm extends Component {
             value={lastname}
             onChange={this.handleInput}
           />
-        </label>
         {lastNameError ? (
           <p className="form-error">
             Last name must be at least two characters
@@ -139,7 +139,9 @@ class RegisterForm extends Component {
         ) : (
           <p></p>
         )}
-        <label>
+        </label>
+        <br/>
+        <label className="firstname">
           New username:
           <input
             type="text"
@@ -147,7 +149,6 @@ class RegisterForm extends Component {
             value={username}
             onChange={this.handleInput}
           />
-        </label>
         {usernameError ? (
           <p className="form-error">Invalid Username</p>
         ) : (
@@ -158,7 +159,9 @@ class RegisterForm extends Component {
         ) : (
           <p></p>
         )}
-        <label>
+        </label>
+        <br/>
+        <label className="firstname">
           Choose password:
           <input
             type="password"
@@ -174,8 +177,8 @@ class RegisterForm extends Component {
             <p></p>
           )}
         </label>
-        <br />
-        <label>
+        <br/>
+        <label className="firstname">
           Repeat password:
           <input
             type="password"
@@ -196,6 +199,7 @@ class RegisterForm extends Component {
       </form>
     ) : null;
   }
+
   checkUsername = () => {
     const { isUser } = this.props;
     const { username } = this.state;
@@ -211,7 +215,7 @@ class RegisterForm extends Component {
           if (err.response.data === "No user was found") {
             this.setState({ freeUsernameError: false });
           } else {
-            this.setState({ freeUsernameError: true });
+            this.setState({ usernameError: true });
           }
         });
     }
