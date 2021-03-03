@@ -20,9 +20,9 @@ const Header = ({
           <LoginPage setUser={setUser} username={username} />
         )}
         <Link to="/">
-          <h1 className="App__HeaderTitle">Pitch Perfect</h1>
+          <h2 className="App__HeaderTitle">Pitch Perfect</h2>
         </Link>
-        <img className="App__HeaderProfilePic" src={goose} alt="profile"></img>
+        {/* <img className="App__HeaderProfilePic" src={goose} alt="profile"></img> */}
       </section>
     </>
   );

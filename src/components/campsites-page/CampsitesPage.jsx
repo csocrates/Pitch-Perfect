@@ -4,6 +4,7 @@ import CampsitesSearchANDResults from "./CampsitesSearchANDResults";
 import SingleCampsitePage from "../singleCampsitePage/SingleCampsitePage";
 import PageNotFound from "./PageNotFound";
 import ClipLoader from "react-spinners/ClipLoader";
+import Userpage from "../userpage/UserPage";
 
 class CampsitesPage extends Component {
   // eslint-disable-next-line no-undef
@@ -21,6 +22,7 @@ class CampsitesPage extends Component {
           />
 
           <SingleCampsitePage path="/campsite/*" map={this.state.map} />
+          <Userpage path="/users/:username" />
           <PageNotFound default />
         </Router>
       </div>
