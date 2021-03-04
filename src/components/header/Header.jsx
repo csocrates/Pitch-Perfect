@@ -15,7 +15,7 @@ const Header = ({ setUser, username }) => {
         ) : (
           <LoginPage setUser={setUser} username={username} />
         )}
-        <Link to="/">
+        <Link to="/" style={{ "text-decoration": "none" }}>
           <h2 className="App__HeaderTitle">
             Pitch Perfect
             <img className="header__tentIcon" src={tentIcon} alt="" />
