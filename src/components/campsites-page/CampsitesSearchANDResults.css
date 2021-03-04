@@ -5,7 +5,7 @@
 
 .CampsitesSearchANDResults__search {
   position: relative;
-  top: -15vh;
+  top: -12.5vh;
   grid-column: 1;
   width: 100%;
   grid-row: 1;
@@ -53,13 +53,13 @@
 
 @media only screen and (min-width: 768px), (min-device-width: 768px) {
   .CampsitesSearchANDResults__search {
-    top: -15vh;
+    top: -12.5vh;
   }
 }
 
 @media only screen and (min-width: 1080px) {
   .CampsitesSearchANDResults__search {
-    top: -15vh;
+    top: -12.5vh;
   }
 }
 
