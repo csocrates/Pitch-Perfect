@@ -83,10 +83,12 @@ input[type="password"] {
 .header__login-button-image {
   width: 30px;
   height: auto;
-  opacity: 0.5;
 }
 
 .header__login-button {
+  opacity: 1;
+  border: none;
+  border-radius: 50%;
 }
 
 .firstname {

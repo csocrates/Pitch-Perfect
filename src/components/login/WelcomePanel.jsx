@@ -7,7 +7,10 @@ const WelcomePanel = ({ username, setUser }) => {
   return (
     <main className="header__welcome">
       <p className="welcome-message">
-        Welcome back
+        Welcome
+        <br />
+        back
+        <br />
         <Link to={`/users/${username}`}> {username}</Link>
       </p>
       <br />

@@ -1,0 +1,41 @@
+.userpage__title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 5px;
+}
+
+.userpage__header {
+  margin-bottom: 0;
+  padding: 0 5px;
+  background: ivory;
+  border-top: 2px solid lightgreen;
+}
+
+.userpage__middle {
+  margin-bottom: 0;
+  padding: 0 5px;
+  background: ivory;
+}
+
+.userpage__bottom {
+  padding: 0 5px;
+  background: ivory;
+  border-bottom: 2px solid lightgreen;
+}
+
+.userpage__camp-history {
+  border-top: 2px solid lightgreen;
+  padding: 0 5px;
+  background: ivory;
+  border-bottom: 2px solid lightgreen;
+}
+
+#underline {
+  text-decoration: underline;
+}
+.userpage__campsite-link {
+  text-decoration: underline;
+}
+.userpage__review-link {
+  text-decoration: underline;
+}
