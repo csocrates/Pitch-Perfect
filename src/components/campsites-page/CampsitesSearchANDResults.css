@@ -23,12 +23,12 @@
 /* the view in singlepage */
 .campsitepage__CampsitesSearchANDResults--expand {
   display: grid;
-  grid-template-rows: 1vh 5vh 32vh 38vh;
+  grid-template-rows: 1vh 6vh 32vh 38vh;
   border-bottom: 2px solid black;
 }
 .campsitepage__CampsitesSearchANDResults--hide {
   display: grid;
-  grid-template-rows: 1vh 5vh;
+  grid-template-rows: 1vh 6vh;
 }
 
 .CampsitesSearchANDResults__expandButton {
@@ -73,12 +73,12 @@
   .campsitepage__CampsitesSearchANDResults--expand {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 5vh 70vh;
+    grid-template-rows: 8vh 70vh;
   }
   .campsitepage__CampsitesSearchANDResults--hide {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 5vh;
+    grid-template-rows: 8vh;
   }
   .CampsitesSearchANDResults__expandButton {
     height: 70%;

@@ -55,7 +55,9 @@ class LoginForm extends Component {
           className="login-input"
         />
         {errorMsg ? <p style={{ color: "red" }}>{errorMsg}</p> : <p></p>}
-        <button onClick={this.handleSubmit}>Log in</button>
+        <button className="login-button" onClick={this.handleSubmit}>
+          Log in
+        </button>
       </form>
     ) : null;
   }

@@ -23,6 +23,7 @@
   margin-left: 10px;
   font-weight: 800;
   color: white;
+  font-size: 1.6rem;
 }
 
 .App__HeaderProfilePic {
@@ -32,6 +33,13 @@
   margin: auto;
   /* width: 100%; */
   /* border-radius: 50%; */
+}
+
+.header__tentIcon {
+  width: 32px;
+  height: auto;
+  position: absolute;
+  margin-left: 10px;
 }
 
 .header__welcome {
@@ -48,9 +56,23 @@
   text-decoration: none;
 }
 
-@media only screen and (min-width: 360px), (min-device-width: 360px) {
+@media only screen and (min-width: 370px), (min-device-width: 370px) {
+  .App__HeaderTitle {
+    font-size: 2rem;
+  }
+  .header__tentIcon {
+    width: 37px;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 428px), (min-device-width: 428px) {
   .App__HeaderTitle {
     font-size: 2.5rem;
+  }
+  .header__tentIcon {
+    width: 45px;
+    height: auto;
   }
 }
 @media only screen and (min-width: 1080px), (min-device-width: 1080px) {
@@ -65,6 +87,11 @@
   .App__HeaderTitle {
     margin-top: 20px;
     font-size: 60px;
+  }
+  .header__tentIcon {
+    width: 64px;
+    height: auto;
+    top: 5%;
   }
 }
 

@@ -6,7 +6,7 @@ const LinkToHomepage = () => {
   return (
     <div>
       <Link to="/">
-        <button className="homepage-button">Return to homepage!</button>
+        <button className="homepage-button">Home</button>
       </Link>
     </div>
   );

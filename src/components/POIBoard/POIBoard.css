@@ -11,7 +11,7 @@
 }
 
 .nearestPubCard {
-  background-color: rgba(19, 94, 22, 0.8);
+  background-color: rgba(16, 68, 0, 0.884);
   color: white;
   grid-area: pubCard;
   border: solid white 2px;
@@ -23,7 +23,7 @@
 }
 
 .nearestSupermarketCard {
-  background-color: rgba(19, 94, 22, 0.8);
+  background-color: rgba(16, 68, 0, 0.884);
   color: white;
   grid-area: supermarketCard;
   border: solid white 2px;
@@ -35,7 +35,7 @@
 }
 
 .nearestCafeCard {
-  background-color: rgba(19, 94, 22, 0.8);
+  background-color: rgba(16, 68, 0, 0.884);
 
   color: white;
   grid-area: cafeCard;

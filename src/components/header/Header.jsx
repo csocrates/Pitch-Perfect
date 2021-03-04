@@ -1,16 +1,12 @@
 import React from "react";
 import "./Header.css";
 import "../../App.css";
-import goose from "../../Images/goose.png";
+import tentIcon from "../../Images/tent-icon.png";
 import { Link } from "@reach/router";
 import LoginPage from "../login/LoginPage";
 import WelcomePanel from "../login/WelcomePanel";
 
-const Header = ({
-  profilePicture = "../Images/goose.jpg",
-  setUser,
-  username,
-}) => {
+const Header = ({ setUser, username }) => {
   return (
     <>
       <section className="App__Header">
@@ -20,9 +16,11 @@ const Header = ({
           <LoginPage setUser={setUser} username={username} />
         )}
         <Link to="/">
-          <h2 className="App__HeaderTitle">Pitch Perfect</h2>
+          <h2 className="App__HeaderTitle">
+            Pitch Perfect
+            <img className="header__tentIcon" src={tentIcon} alt="" />
+          </h2>
         </Link>
-        {/* <img className="App__HeaderProfilePic" src={goose} alt="profile"></img> */}
       </section>
     </>
   );

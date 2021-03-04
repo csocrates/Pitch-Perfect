@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import RegisterForm from "./RegisterForm";
+import "../header/Header.css";
+
 class RegisterButton extends Component {
   state = { showRegisterForm: false };
   render() {
@@ -22,7 +24,7 @@ class RegisterButton extends Component {
             />
           </>
         ) : (
-          <p>Successfully registered!</p>
+          <p className="register-success-msg">Successfully registered!</p>
         )}
       </>
     );
