@@ -9,6 +9,7 @@
   grid-column: 1;
   width: 100%;
   grid-row: 1;
+  height: 0;
 }
 
 .CampsitesSearchANDResults__map {
@@ -22,12 +23,14 @@
 
 .campsitepage__CampsitesSearchANDResults--expand {
   display: grid;
-  grid-template-rows: 1vh 6vh 32vh 38vh;
+  grid-template-rows: 0vh 6vh 32vh 38vh;
   border-bottom: 2px solid black;
+  border-radius: 0;
 }
 .campsitepage__CampsitesSearchANDResults--hide {
   display: grid;
-  grid-template-rows: 1vh 6vh;
+  grid-template-rows: 0vh 6vh;
+  border-radius: 0;
 }
 
 .CampsitesSearchANDResults__expandButton {

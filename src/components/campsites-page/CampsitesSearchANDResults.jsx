@@ -72,6 +72,12 @@ class CampsitesSearchANDResults extends Component {
     if (this.state.isLoading) return <ClipLoader />;
     return (
       <>
+        <section className="CampsitesSearchANDResults__search">
+          <SearchBar
+            changeLocation={this.changeLocation}
+            placeholder={placeholder}
+          />
+        </section>
         <div
           className={
             this.props.path === "/"
@@ -81,12 +87,6 @@ class CampsitesSearchANDResults extends Component {
               : "campsitepage__CampsitesSearchANDResults--hide"
           }
         >
-          <section className="CampsitesSearchANDResults__search">
-            <SearchBar
-              changeLocation={this.changeLocation}
-              placeholder={placeholder}
-            />
-          </section>
           {this.props.path === "/" ? null : (
             <Button
               variant="secondary"
