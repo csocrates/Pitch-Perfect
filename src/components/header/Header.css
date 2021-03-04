@@ -20,6 +20,7 @@
   margin-left: 10px;
   font-weight: 800;
   color: white;
+  font-size: 1.6rem;
 }
 
 .App__HeaderProfilePic {
@@ -27,6 +28,13 @@
   grid-row: 2;
   height: 3rem;
   margin: auto;
+}
+
+.header__tentIcon {
+  width: 32px;
+  height: auto;
+  position: absolute;
+  margin-left: 10px;
 }
 
 .header__welcome {
@@ -39,36 +47,61 @@
   grid-row: 1;
 }
 
-@media only screen and (min-width: 360px), (min-device-width: 360px) {
-  .App__HeaderTitle {
-    font-size: 2.5rem;
-  }
+.App__HeaderTitle:visited .App__HeaderTitle:focus .App__HeaderTitle:active {
+  text-decoration: none;
 }
-@media only screen and (min-width: 1080px), (min-device-width: 1080px) {
-  .App__Header {
-    background-image: url("../../Images/background.jpg");
-    background-size: 100% 100%;
-    grid-template-rows: 25vh;
-  }
-  .App__HeaderProfilePic {
-    height: 60%;
-  }
+
+@media only screen and (min-width: 370px), (min-device-width: 370px) {
   .App__HeaderTitle {
-    margin-top: 20px;
-    font-size: 60px;
+    font-size: 2rem;
+  }
+  .header__tentIcon {
+    width: 37px;
+    top: 1.5%;
   }
 }
 
-@media only screen and (min-width: 1380px), (min-device-width: 1380px) {
-  .App__Header {
-    background-image: url("../../Images/background.jpg");
-    background-size: 100%;
+@media only screen and (min-width: 428px), (min-device-width: 428px) {
+  @media only screen and (min-width: 360px), (min-device-width: 360px) {
+    .App__HeaderTitle {
+      font-size: 2.5rem;
+    }
+    .header__tentIcon {
+      width: 45px;
+      height: auto;
+    }
   }
-  .App__HeaderProfilePic {
-    height: 60%;
+  @media only screen and (min-width: 1080px), (min-device-width: 1080px) {
+    .App__Header {
+      background-image: url("../../Images/background.jpg");
+      background-size: 100% 100%;
+      grid-template-rows: 25vh;
+    }
+    .App__HeaderProfilePic {
+      height: 60%;
+    }
+    .App__HeaderTitle {
+      margin-top: 0;
+      font-size: 60px;
+    }
+    .header__tentIcon {
+      width: 64px;
+      height: auto;
+      top: 1.5%;
+    }
   }
-  .App__HeaderTitle {
-    margin-top: 20px;
-    font-size: 60px;
+
+  @media only screen and (min-width: 1380px), (min-device-width: 1380px) {
+    .App__Header {
+      background-image: url("../../Images/background.jpg");
+      background-size: 100%;
+    }
+    .App__HeaderProfilePic {
+      height: 60%;
+    }
+    .App__HeaderTitle {
+      margin-top: 0;
+      font-size: 60px;
+    }
   }
 }

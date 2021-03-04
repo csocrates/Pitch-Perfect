@@ -1,6 +1,3 @@
-/* .SingleCampsiteIntro {
-} */
-
 .SingleCampsiteIntro__name {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -42,7 +39,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 0 5px;
-  font-size: 30px;
+  font-size: 1.5rem;
 }
 
 .review__body {
@@ -50,7 +47,7 @@
   padding: 0 5px;
   background: ivory;
   border-top: 2px solid lightgreen;
-  font-size: 22px;
+  font-size: 1rem;
 }
 
 .review__author {

@@ -97,7 +97,7 @@ class CampsitesSearchANDResults extends Component {
                 });
               }}
             >
-              {this.state.isExpand ? "▲" : "search list ▼"}
+              {this.state.isExpand ? "▲" : "Search List ▼"}
             </Button>
           )}
           <section

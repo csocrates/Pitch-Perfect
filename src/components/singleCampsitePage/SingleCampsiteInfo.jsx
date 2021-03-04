@@ -83,7 +83,7 @@ class SingleCampsiteInfo extends Component {
     }
   }
 
-  render () {
+  render() {
     if (this.state.isLoading) return <ClipLoader />;
     if (this.state.googleAPIError)
       return (
@@ -133,6 +133,7 @@ class SingleCampsiteInfo extends Component {
             </>
           )}
         </section>
+
         <section className="singleCampsiteInfo__LinkToHomepage">
           <LinkToHomepage />
         </section>

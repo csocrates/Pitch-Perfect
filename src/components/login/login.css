@@ -75,14 +75,34 @@ input[type="password"] {
   font-weight: 500;
 }
 
+.login-button {
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.login-button:hover {
+  background-color: rgb(105, 102, 102);
+  color: white;
+  font-weight: 700;
+}
+
 .createProfile-button {
   margin-bottom: 10px;
   background-color: white;
+  border-radius: 10px;
+  font-weight: 700;
 }
 
 .header__login-button-image {
   width: 30px;
   height: auto;
+}
+.createProfile-button:hover {
+  background-color: rgb(105, 102, 102);
+  color: white;
+  font-weight: 700;
+  font-weight: 700;
 }
 
 .header__login-button {
@@ -97,4 +117,12 @@ input[type="password"] {
   padding: 5px;
   padding-bottom: 1px;
   font-size: 14px;
+}
+
+.register-success-msg {
+  background-color: white;
+  margin-top: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 5px;
 }

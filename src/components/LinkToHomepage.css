@@ -8,10 +8,11 @@
   border: 0.16em solid rgba(255, 255, 255, 0);
   border-radius: 2em;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
+
   color: #ffffff;
   background-color: #348a09;
   transition: all 0.2s;
+  font-weight: 600;
 }
 .homepage-button:hover {
   border-color: rgb(50, 218, 8);
