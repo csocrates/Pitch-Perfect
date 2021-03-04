@@ -6,11 +6,11 @@ import "./POIBoard.css";
 const NearestCard = ({ type, name, distance, onFoot, icon }) => {
   return (
     <section className={`nearest${type}Card`}>
-      <img className="nearestIcon" src={icon} alt={type} />
+      <img className={`nearest${type}Icon`} src={icon} alt={type} />
 
-      <p className="name">{name}</p>
+      <p className={`${type}name`}>{name}</p>
 
-      <p className="distance">
+      <p className={`${type}distance`}>
         <img
           src={roadIcon}
           alt="distance"
@@ -19,7 +19,7 @@ const NearestCard = ({ type, name, distance, onFoot, icon }) => {
         {distance}
       </p>
 
-      <div className="walking-time">
+      <div className={`${type}walking-time`}>
         <img
           src={walkingIcon}
           alt="On Foot"
