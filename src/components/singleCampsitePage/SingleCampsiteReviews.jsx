@@ -9,7 +9,7 @@ const SingleCampsiteReviews = ({username, body, created_at}) => {
             </p>
             <p className="review__author"
             >
-                {`Written by ${username} on ${new Date(created_at)}`}
+                {`Written by ${username} on ${new Date(created_at).toString().split('GMT')[0]}`}
             </p>
         </div>
     );
