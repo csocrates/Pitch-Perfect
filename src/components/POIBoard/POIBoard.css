@@ -18,8 +18,37 @@
   display: grid;
   grid-template: 50% 50% / 34% 25% 41%;
   grid-template-areas:
-    "pic name name"
-    "pic distance walking-time";
+    "pubpic pubname pubname"
+    "pubpic pubdistance pubwalking-time";
+}
+
+.nearestPubIcon {
+  grid-area: pubpic;
+  width: 100px;
+  height: auto;
+  padding: 10px;
+}
+
+.Pubname {
+  grid-area: pubname;
+  font-weight: 600;
+  text-align: center;
+  margin: auto auto;
+  font-size: 1.2rem;
+  line-height: 1em;
+}
+
+.Pubdistance {
+  grid-area: pubdistance;
+  margin: auto auto;
+  font-size: 15px;
+  display: inline;
+}
+
+.Pubwalking-time {
+  grid-area: pubwalking-time;
+  margin: auto auto;
+  font-size: 15px;
 }
 
 .nearestSupermarketCard {
@@ -30,8 +59,37 @@
   display: grid;
   grid-template: 50% 50% / 34% 25% 41%;
   grid-template-areas:
-    "pic name name"
-    "pic distance walking-time";
+    "Supermarketpic Supermarketname Supermarketname"
+    "Supermarketpic Supermarketdistance Supermarketwalking-time";
+}
+
+.nearestSupermarketIcon {
+  grid-area: Supermarketpic;
+  width: 100px;
+  height: auto;
+  padding: 10px;
+}
+
+.Supermarketname {
+  grid-area: Supermarketname;
+  font-weight: 600;
+  text-align: center;
+  margin: auto auto;
+  font-size: 1.2rem;
+  line-height: 1em;
+}
+
+.Supermarketdistance {
+  grid-area: Supermarketdistance;
+  margin: auto auto;
+  font-size: 15px;
+  display: inline;
+}
+
+.Supermarketwalking-time {
+  grid-area: Supermarketwalking-time;
+  margin: auto auto;
+  font-size: 15px;
 }
 
 .nearestCafeCard {
@@ -43,19 +101,19 @@
   display: grid;
   grid-template: 50% 50% / 34% 25% 41%;
   grid-template-areas:
-    "pic name name"
-    "pic distance walking-time";
+    "Cafepic Cafename Cafename"
+    "Cafepic Cafedistance Cafewalking-time";
 }
 
-.nearestIcon {
-  grid-area: pic;
+.nearestCafeIcon {
+  grid-area: Cafepic;
   width: 100px;
   height: auto;
   padding: 10px;
 }
 
-.name {
-  grid-area: name;
+.Cafename {
+  grid-area: Cafename;
   font-weight: 600;
   text-align: center;
   margin: auto auto;
@@ -63,15 +121,15 @@
   line-height: 1em;
 }
 
-.distance {
-  grid-area: distance;
+.Cafedistance {
+  grid-area: Cafedistance;
   margin: auto auto;
   font-size: 15px;
   display: inline;
 }
 
-.walking-time {
-  grid-area: walking-time;
+.Cafewalking-time {
+  grid-area: Cafewalking-time;
   margin: auto auto;
   font-size: 15px;
 }
