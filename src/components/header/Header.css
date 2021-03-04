@@ -57,7 +57,7 @@
   }
   .header__tentIcon {
     width: 37px;
-    height: auto;
+    top: 1.5%;
   }
 }
 
@@ -81,13 +81,13 @@
       height: 60%;
     }
     .App__HeaderTitle {
-      margin-top: 20px;
+      margin-top: 0;
       font-size: 60px;
     }
     .header__tentIcon {
       width: 64px;
       height: auto;
-      top: 5%;
+      top: 1.5%;
     }
   }
 
@@ -100,7 +100,7 @@
       height: 60%;
     }
     .App__HeaderTitle {
-      margin-top: 20px;
+      margin-top: 0;
       font-size: 60px;
     }
   }
