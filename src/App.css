@@ -46,10 +46,6 @@
     width: 100%;
     display: grid;
     grid-template-rows: 25vh 75vh;
-    /* grid-template-rows: auto; */
-    /* grid-template-areas:
-      "header header"
-      "map" "campsiteList"; */
   }
   .App__Header {
     grid-row: 1;
