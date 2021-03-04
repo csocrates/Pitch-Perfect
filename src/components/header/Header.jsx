@@ -1,7 +1,6 @@
 import React from "react";
 import "./Header.css";
 import "../../App.css";
-import goose from "../../Images/goose.png";
 import { Link } from "@reach/router";
 import LoginPage from "../login/LoginPage";
 import WelcomePanel from "../login/WelcomePanel";
@@ -19,7 +18,7 @@ const Header = ({
         ) : (
           <LoginPage setUser={setUser} username={username} />
         )}
-        <Link to="/">
+        <Link to="/" style={{"text-decoration": "none"}}>
           <h2 className="App__HeaderTitle">Pitch Perfect</h2>
         </Link>
         {/* <img className="App__HeaderProfilePic" src={goose} alt="profile"></img> */}

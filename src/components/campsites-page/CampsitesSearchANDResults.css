@@ -20,7 +20,6 @@
   overflow-y: scroll;
 }
 
-/* the view in singlepage */
 .campsitepage__CampsitesSearchANDResults--expand {
   display: grid;
   grid-template-rows: 1vh 5vh 32vh 38vh;
@@ -117,8 +116,6 @@
     display: none;
   }
   .CampsitesSearchANDResults__search {
-    /* grid-row: 1; */
-    /* z-index: 1000; */
     position: relative;
     top: -15vh;
     grid-column: 1;
