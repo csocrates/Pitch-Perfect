@@ -135,13 +135,31 @@
 }
 
 @media only screen and (min-width: 1080px), (min-device-width: 1080px) {
-  .name {
+  .Pubname {
     font-size: 26px;
   }
-  .distance {
+  .Pubdistance {
     font-size: 20px;
   }
-  .walking-time {
+  .Pubwalking-time {
+    font-size: 20px;
+  }
+  .Cafename {
+    font-size: 26px;
+  }
+  .Cafedistance {
+    font-size: 20px;
+  }
+  .Cafewalking-time {
+    font-size: 20px;
+  }
+  .Supermarketname {
+    font-size: 26px;
+  }
+  .Supermarketdistance {
+    font-size: 20px;
+  }
+  .Supermarketwalking-time {
     font-size: 20px;
   }
 }
@@ -162,17 +180,45 @@
   .nearestCafeCard {
     grid-row: 3;
   }
-  .name {
+  .Pubname {
     font-size: 28px;
   }
-  .distance {
+  .Pubdistance {
     font-size: 22px;
   }
-  .walking-time {
+  .Pubwalking-time {
     font-size: 22px;
   }
-  .nearestIcon {
-    width: 100px;
+  .nearestPubIcon {
+    width: 12 0px;
+    margin: 15px;
+    padding: 0;
+  }
+  .Cafename {
+    font-size: 28px;
+  }
+  .Cafedistance {
+    font-size: 22px;
+  }
+  .Cafewalking-time {
+    font-size: 22px;
+  }
+  .nearestCafeIcon {
+    width: 120px;
+    margin: 15px;
+    padding: 0;
+  }
+  .Supermarketname {
+    font-size: 28px;
+  }
+  .Supermarketdistance {
+    font-size: 22px;
+  }
+  .Supermarketwalking-time {
+    font-size: 22px;
+  }
+  .nearestSupermarketIcon {
+    width: 120px;
     margin: 15px;
     padding: 0;
   }
