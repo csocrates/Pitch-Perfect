@@ -3,6 +3,7 @@ import NearestCard from "./NearestCard";
 import pubIcon from "../../Images/beer-icon.png";
 import supermarketIcon from "../../Images/supermarket-icon.webp";
 import cafeIcon from "../../Images/cafe-icon.webp";
+import goosePic from "../../Images/painted-goose.png";
 import ClipLoader from "react-spinners/ClipLoader";
 
 class POIBoard extends Component {
@@ -12,7 +13,12 @@ class POIBoard extends Component {
     nearestSupermarkets: [],
     nearestCafes: [],
     placesLoaded: false,
-    distanceInfo: [],
+    barDistanceInfo: [],
+    cafeDistanceInfo: [],
+    restaurantDistanceInfo: [],
+    barLoaded: false,
+    cafeLoaded: false,
+    supermarketLoaded: false,
   };
 
   componentDidMount() {
@@ -22,14 +28,56 @@ class POIBoard extends Component {
 
   componentDidUpdate() {
     const { location } = this.props;
-    const { nearestBars, nearestSupermarkets, nearestCafes } = this.state;
+    const {
+      nearestBars,
+      nearestSupermarkets,
+      nearestCafes,
+      barLoaded,
+      cafeLoaded,
+      supermarketLoaded,
+      placesLoaded,
+      isLoading,
+    } = this.state;
+    console.log(placesLoaded, isLoading);
 
-    if (this.state.placesLoaded) {
-      this.findDistanceBetween(location, [
-        nearestBars[0]?.geometry.location,
-        nearestSupermarkets[0]?.geometry.location,
-        nearestCafes[0]?.geometry.location,
-      ]);
+    if (isLoading) {
+      if (barLoaded && cafeLoaded && supermarketLoaded) {
+        this.setState({ isLoading: false });
+      }
+
+      if (placesLoaded && isLoading && !barLoaded) {
+        if (nearestBars.length !== 0) {
+          this.findDistanceBetween("bar", location, [
+            nearestBars[0]?.geometry.location,
+          ]);
+        } else {
+          this.setState({ barLoaded: true });
+        }
+      }
+      if (placesLoaded && isLoading && !cafeLoaded) {
+        if (nearestCafes.length !== 0) {
+          this.findDistanceBetween("cafe", location, [
+            nearestCafes[0]?.geometry.location,
+          ]);
+        } else {
+          this.setState({ cafeLoaded: true });
+        }
+      }
+      if (placesLoaded && isLoading && !supermarketLoaded) {
+        if (nearestSupermarkets.length !== 0) {
+          this.findDistanceBetween("supermarket", location, [
+            nearestSupermarkets[0]?.geometry.location,
+          ]);
+        } else {
+          this.setState({ supermarketLoaded: true });
+        }
+      }
+
+      // this.findDistanceBetween(location, [
+      //   nearestBars[0]?.geometry.location,
+      //   nearestSupermarkets[0]?.geometry.location,
+      //   nearestCafes[0]?.geometry.location,
+      // ]);
     }
   }
 
@@ -39,33 +87,57 @@ class POIBoard extends Component {
       nearestBars,
       nearestSupermarkets,
       nearestCafes,
-      distanceInfo,
+      barDistanceInfo,
+      supermarketDistanceInfo,
+      cafeDistanceInfo,
     } = this.state;
+    console.log("new bar info: ", barDistanceInfo);
 
     if (isLoading) return <ClipLoader />;
     return (
       <div className="poiBoard">
-        <NearestCard
-          type="Pub"
-          name={nearestBars[0].name}
-          distance={distanceInfo[0].distance.text}
-          onFoot={distanceInfo[0].duration.text}
-          icon={pubIcon}
-        />
-        <NearestCard
-          type="Supermarket"
-          name={nearestSupermarkets[0].name}
-          distance={distanceInfo[1].distance.text}
-          onFoot={distanceInfo[1].duration.text}
-          icon={supermarketIcon}
-        />
-        <NearestCard
-          type="Cafe"
-          name={nearestCafes[0].name}
-          distance={distanceInfo[2].distance.text}
-          onFoot={distanceInfo[2].duration.text}
-          icon={cafeIcon}
-        />
+        {nearestBars.length === 0 ? (
+          <p className="no-poi-msg">
+            Sorry, there doesn't appear to be any pubs nearby...
+            <img className="lost-goose" src={goosePic} alt="Lost Goose" />
+          </p>
+        ) : (
+          <NearestCard
+            type="Pub"
+            name={nearestBars[0].name}
+            distance={barDistanceInfo[0].distance.text}
+            onFoot={barDistanceInfo[0].duration.text}
+            icon={pubIcon}
+          />
+        )}
+        {nearestSupermarkets.length === 0 ? (
+          <p className="no-poi-msg">
+            Sorry, there doesn't appear to be any supermarkets nearby...
+            <img className="lost-goose" src={goosePic} alt="Lost Goose" />
+          </p>
+        ) : (
+          <NearestCard
+            type="Supermarket"
+            name={nearestSupermarkets[0].name}
+            distance={supermarketDistanceInfo[0].distance.text}
+            onFoot={supermarketDistanceInfo[0].duration.text}
+            icon={supermarketIcon}
+          />
+        )}
+        {nearestCafes.length === 0 ? (
+          <p className="no-poi-msg">
+            Sorry, there doesn't appear to be any cafes nearby...
+            <img className="lost-goose" src={goosePic} alt="Lost Goose" />
+          </p>
+        ) : (
+          <NearestCard
+            type="Cafe"
+            name={nearestCafes[0].name}
+            distance={cafeDistanceInfo[0].distance.text}
+            onFoot={cafeDistanceInfo[0].duration.text}
+            icon={cafeIcon}
+          />
+        )}
       </div>
     );
   }
@@ -120,23 +192,37 @@ class POIBoard extends Component {
     });
   }
 
-  findDistanceBetween(origin, destinations) {
+  findDistanceBetween(type, origin, destination) {
     const service = new window.google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {
         origins: [origin],
-        destinations,
+        destinations: destination,
         travelMode: "WALKING",
       },
       ({ rows }, status) => {
+        console.log("DM: ", rows);
         if (status !== "OK") {
           console.log("Error was " + status);
         } else {
-          this.setState({
-            distanceInfo: rows[0].elements,
-            placesLoaded: false,
-            isLoading: false,
-          });
+          if (type == "bar") {
+            this.setState({
+              barLoaded: true,
+              barDistanceInfo: rows[0].elements,
+            });
+          }
+          if (type == "cafe") {
+            this.setState({
+              cafeLoaded: true,
+              cafeDistanceInfo: rows[0].elements,
+            });
+          }
+          if (type == "supermarket") {
+            this.setState({
+              supermarketLoaded: true,
+              supermarketDistanceInfo: rows[0].elements,
+            });
+          }
         }
       }
     );

@@ -134,6 +134,18 @@
   font-size: 15px;
 }
 
+.no-poi-msg {
+  text-align: center;
+}
+
+.lost-goose {
+  width: 50px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media only screen and (min-width: 1080px), (min-device-width: 1080px) {
   .Pubname {
     font-size: 26px;
@@ -181,45 +193,45 @@
     grid-row: 3;
   }
   .Pubname {
-    font-size: 28px;
+    font-size: 21px;
   }
   .Pubdistance {
-    font-size: 22px;
+    font-size: 18px;
   }
   .Pubwalking-time {
-    font-size: 22px;
+    font-size: 18px;
   }
   .nearestPubIcon {
-    width: 12 0px;
-    margin: 15px;
+    width: 90px;
+    margin: 5px;
     padding: 0;
   }
   .Cafename {
-    font-size: 28px;
+    font-size: 21px;
   }
   .Cafedistance {
-    font-size: 22px;
+    font-size: 18px;
   }
   .Cafewalking-time {
-    font-size: 22px;
+    font-size: 18px;
   }
   .nearestCafeIcon {
-    width: 120px;
-    margin: 15px;
+    width: 90px;
+    margin: 5px;
     padding: 0;
   }
   .Supermarketname {
-    font-size: 28px;
+    font-size: 21px;
   }
   .Supermarketdistance {
-    font-size: 22px;
+    font-size: 18px;
   }
   .Supermarketwalking-time {
-    font-size: 22px;
+    font-size: 18px;
   }
   .nearestSupermarketIcon {
-    width: 120px;
-    margin: 15px;
+    width: 90px;
+    margin: 5px;
     padding: 0;
   }
 }
